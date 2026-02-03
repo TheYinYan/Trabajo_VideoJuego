@@ -1,5 +1,6 @@
 import Entidades.Personajes;
 import Entidades.Buenos;
+import Entidades.Entidad;
 import Entidades.Malos;
 
 public class App {
@@ -22,7 +23,7 @@ public class App {
         int capacidad = -1;
         int nPersonajes = -1;
         int[][] tablero;
-        Personajes[] arrayPersonajes;
+        Entidad[] arrayEntidades;
 
         if (capacidad == -1 && nPersonajes == -1) {
             // Pedir Capacidad y comprobar si la capacidad cumple con los requesitos
@@ -33,12 +34,17 @@ public class App {
             nPersonajes = Integer.parseInt(System.console().readLine("Dame el numero de personajes: "));
             coprobaciones(nPersonajes, "numero de personajes");
         }
-        // Crear array del tablero y la de Personajes
-        tablero = new int[capacidad][capacidad];
-        arrayPersonajes = new Personajes[nPersonajes];
 
-        // Rellenar Array de personajes y Tablero
-        for (int i = 0; i < arrayPersonajes.length; i++) {
+        // Obstaculos
+        // nObst Aleatorio (int)(Math.random()*((capacidad*2)*0.01) + 1)
+        // Aumentar arrayEntidades = new Personajes[nPersonajes+nObst];
+
+        // Crear array del tablero y la de Entidades
+        tablero = new int[capacidad][capacidad];
+        arrayEntidades = new Personajes[nPersonajes];
+
+        // Rellenar Array de Entidades y Tablero
+        for (int i = 0; i < arrayEntidades.length; i++) {
             int x = (int) (Math.random() * capacidad);
             int y = (int) (Math.random() * capacidad);
             while (tablero[x][y] == 1 || tablero[x][y] == 2) {
@@ -46,10 +52,10 @@ public class App {
                 y = (int) (Math.random() * capacidad);
             }
             if (i % 2 == 0) {
-                arrayPersonajes[i] = new Buenos(y, x);
+                arrayEntidades[i] = new Buenos(y, x);
                 tablero[x][y] = 2;
             } else {
-                arrayPersonajes[i] = new Malos(y, x);
+                arrayEntidades[i] = new Malos(y, x);
                 tablero[x][y] = 1;
             }
         }
