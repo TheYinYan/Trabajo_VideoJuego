@@ -64,15 +64,16 @@ public class App {
             for (int i = -1; i <= capacidad; i++) {
                 for (int j = -1; j <= capacidad; j++) {
                     if (i == -1) {
-                        System.out.printf("%s", (j == -1) ? " ----" : (j == capacidad) ? "----" : "-----");
+                        System.out.printf("%s", (j == -1) ? "-" : (j == capacidad) ? "-" : "-");
                     } else if (i == capacidad)
-                        System.out.printf("%s", (j == -1) ? " ----" : (j == capacidad) ? "----" : "-----");
+                        System.out.printf("%s", (j == -1) ? "-" : (j == capacidad) ? "-" : "-");
                     else {
                         System.out.printf("%s",
-                                (j == -1) ? "|    "
-                                        : (j == capacidad) ? "    |"
-                                                : (tablero[i][j]) == 1 ? "  M  "
-                                                        : (tablero[i][j]) == 2 ? "  B  " : "     ");
+                                (j == -1) ? "|"
+                                        : (j == capacidad) ? "|"
+                                                : (tablero[i][j]) == 1 ? "M"
+                                                        : (tablero[i][j]) == 2 ? "B" 
+                                                            : (tablero[i][j]) == 3 ? "*" : " ");
                     }
                 }
                 System.out.println();
