@@ -24,7 +24,7 @@ public class App {
         int nPersonajes = -1;
         int[][] tablero;
         Entidad[] arrayEntidades;
-
+        // Pedir altura y anchura
         if (capacidad == -1 && nPersonajes == -1) {
             // Pedir Capacidad y comprobar si la capacidad cumple con los requesitos
             capacidad = Integer.parseInt(System.console().readLine("Dame el capacidad del tablero: "));
