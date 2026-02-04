@@ -136,6 +136,26 @@ public class App {
                 }
             }
 
+            // Asignar Malos a los Buenos
+            for (int i = 0; i < nPersonajes; i++) {
+                if (arrayPersonajes[i].getClass() == Buenos.class) {
+                    Buenos bueno = (Buenos) arrayPersonajes[i];
+                    double distanciaMin = Double.MAX_VALUE;
+                    Personajes maloCercano = null;
+                    for (int j = 0; j < nPersonajes; j++) {
+                        if (arrayPersonajes[j].getClass() == Malos.class) {
+                            double distancia = bueno.distaciaCon(arrayPersonajes[j]);
+                            if (distancia < distanciaMin) {
+                                distanciaMin = distancia;
+                                maloCercano = arrayPersonajes[j];
+                            }
+                        }
+                    }
+                    bueno.setMalos(maloCercano);
+                }
+            }
+            
+            // Mover las Personajes
             for (int i = 0; i < altura; i++) {
                 for (int j = 0; j < anchura; j++) {
                     if (arrayEntidades[i][j] != null) {
@@ -155,9 +175,6 @@ public class App {
                             if (arrayEntidades[auxY][auxX] == null) {
                                 arrayEntidades[auxY][auxX] = entidad;
                                 arrayEntidades[i][j] = null;
-                            } else {
-                                // Para implementar colosiones
-
                             }
                         }
                     }
