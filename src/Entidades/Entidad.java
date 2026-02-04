@@ -42,7 +42,7 @@ public class Entidad {
 
         if(x < 0 || x >= ancho){
             vx = -vx;
-            x += this.vx;
+            x += vx;
         }
         if(y < 0 || y >= alto){
             vy = -vy;

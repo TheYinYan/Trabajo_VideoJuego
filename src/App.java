@@ -108,7 +108,7 @@ public class App {
                 System.out.print("═");
             }
             System.out.println("╝");
-            Thread.sleep(1500);
+            Thread.sleep(1000);
             System.out.println(CLEAN_SCREEN);
 
             for (int i = 0; i < altura; i++) {
