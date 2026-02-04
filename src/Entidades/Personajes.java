@@ -17,4 +17,8 @@ public class Personajes extends Entidad {
     public static int getnPersonajes() {
         return nPersonajes;
     }
+
+    public static void setnPersonajes(int nPersonajes) {
+        Personajes.nPersonajes = nPersonajes;
+    }
 }

@@ -10,4 +10,10 @@ public class Obstaculos extends Entidad {
     public String toString() {
         return String.format("*");
     }
+
+    @Override
+    public int getVida() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getVida'");
+    }
 }

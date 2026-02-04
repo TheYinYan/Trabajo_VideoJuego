@@ -36,7 +36,7 @@ public class App {
                     nameArray[y][x] = new Obstaculos(y, x);
                     break;
                 case "Malos":
-                    nameArray[y][x] = new Obstaculos(y, x);
+                    nameArray[y][x] = new Malos(y, x);
                     break;
                 case "Buenos":
                     nameArray[y][x] = new Buenos(y, x);
@@ -51,10 +51,15 @@ public class App {
     private static void asignarPersonajesCercanos(int nPersonajes, Personajes[] arrayPersonajes, String tipoPersonaje,
             String tipoPersonajeCerca) {
         for (int i = 0; i < nPersonajes; i++) {
+            if (arrayPersonajes[i] == null)
+                continue;
             if (arrayPersonajes[i].getClass().getSimpleName().equals(tipoPersonaje)) {
                 double distanciaMin = Double.MAX_VALUE;
                 Personajes entidadCerca = null;
                 for (int j = 0; j < nPersonajes; j++) {
+                    if (arrayPersonajes[j] == null)
+                        continue;
+
                     if (arrayPersonajes[j].getClass().getSimpleName().equals(tipoPersonajeCerca)) {
                         double distancia = 0;
                         switch (tipoPersonaje) {
@@ -72,20 +77,37 @@ public class App {
                             entidadCerca = arrayPersonajes[j];
                         }
                     }
-                }
-                switch (tipoPersonaje) {
-                    case "Malos":
-                        Malos malo = (Malos) arrayPersonajes[i];
-                        malo.setBuenos(entidadCerca);
-                        break;
-                    case "Buenos":
-                        Buenos bueno = (Buenos) arrayPersonajes[i];
-                        bueno.setMalos(entidadCerca);
-                        break;
+
+                    switch (tipoPersonaje) {
+                        case "Malos":
+                            Malos malo = (Malos) arrayPersonajes[i];
+                            malo.setBuenos(entidadCerca);
+                            break;
+                        case "Buenos":
+                            Buenos bueno = (Buenos) arrayPersonajes[i];
+                            bueno.setMalos(entidadCerca);
+                            break;
+                    }
                 }
             }
         }
 
+    }
+
+    // Eliminar Personaje del arrayPersonajes
+    private static void eliminarPersonaje(int nPersonajes, Personajes[] arrayPersonajes, Entidad[][] arrayEntidades,
+            Entidad entidad, int x, int y) {
+        for (int i = 0; i < nPersonajes; i++) {
+
+            if (arrayPersonajes[i] == entidad) {
+                arrayPersonajes[i] = null;
+
+                Personajes.setnPersonajes(Personajes.getnPersonajes() - 1);
+                // Eliminar de arrayEntidades
+                arrayEntidades[y][x] = null;
+                break;
+            }
+        }
     }
 
     public static void main(String[] args) throws Exception {
@@ -103,8 +125,7 @@ public class App {
             anchura = Integer.parseInt(System.console().readLine("Dame el anchura del tablero: "));
             coprobaciones(anchura, "anchura del tablero");
 
-            // Pedir numeros de Personajes y Comprobar si la nPersonajes cumple con los
-            // requesitos
+            // Pedir n de Personajes y Comprobar si la nPersonajes cumple con los requesitos
             nPersonajes = Integer.parseInt(System.console().readLine("Dame el numero de personajes: "));
             coprobaciones(nPersonajes, "numero de personajes");
         }
@@ -135,6 +156,7 @@ public class App {
         while (!end) {
             System.out.println(CLEAN_SCREEN);
             // Pintar tablero
+            System.out.println(Entidades.Personajes.getnPersonajes() + " Personajes restantes");
             System.out.print("╔");
             for (int i = 0; i <= anchura; i++) {
                 System.out.print("═");
@@ -179,15 +201,42 @@ public class App {
                         int auxX = entidad.getX();
                         int auxY = entidad.getY();
                         if (auxX != j || auxY != i) {
+
+                            // Mover Si esta vacio
                             if (arrayEntidades[auxY][auxX] == null) {
                                 arrayEntidades[auxY][auxX] = entidad;
                                 arrayEntidades[i][j] = null;
                             }
+                            // Si hay alguien (lucha)
+                            else if ((arrayEntidades[auxY][auxX] instanceof Malos && entidad instanceof Buenos)
+                                    || (arrayEntidades[auxY][auxX] instanceof Buenos && entidad instanceof Malos)) {
+                                System.out.println(CLEAN_SCREEN);
+
+                                Entidad defensor = arrayEntidades[auxY][auxX];
+                                int resultado = (int) (Math.random() * (entidad.getVida() + defensor.getVida()));
+
+                                if (resultado < entidad.getVida()) {
+                                    System.out.printf("El %s ha ganado el combate!", entidad.getClass().getSimpleName());
+                                    Thread.sleep(1000);
+
+                                    eliminarPersonaje(nPersonajes, arrayPersonajes, arrayEntidades, defensor, auxX,
+                                            auxY);
+
+                                    arrayEntidades[auxY][auxX] = entidad;
+                                    arrayEntidades[i][j] = null;
+
+                                } else {
+                                    System.out.printf("El %s ha ganado el combate!", defensor.getClass().getSimpleName());
+                                    Thread.sleep(1000);
+
+                                    eliminarPersonaje(nPersonajes, arrayPersonajes, arrayEntidades, entidad, j, i);
+                                }
+                            }
                         }
                     }
                 }
-            }
 
+            }
         }
     }
 }

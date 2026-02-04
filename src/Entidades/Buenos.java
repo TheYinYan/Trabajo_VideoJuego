@@ -17,7 +17,10 @@ public class Buenos extends Personajes {
 
     @Override
     public void mover(int ancho, int alto) {
-        if (getX() < Malos.getX()) {
+        if (Malos == null) {
+          super.mover(ancho, alto);
+          return;
+        }else if (getX() < Malos.getX()) {
             setVx(-1);
         } else if (getX() > Malos.getX()) {
             setVx(1);
@@ -25,7 +28,10 @@ public class Buenos extends Personajes {
             setVx(0);
         }
 
-        if (getY() < Malos.getY()) {
+        if (Malos == null) {
+          super.mover(ancho, alto);
+          return;
+        }else if (getY() < Malos.getY()) {
             setVy(-1);
         } else if (getY() > Malos.getY()) {
             setVy(1);

@@ -1,6 +1,6 @@
 package Entidades;
 
-public class Entidad {
+public abstract class Entidad {
     // Posición
     protected int y;
     protected int x;
@@ -15,6 +15,8 @@ public class Entidad {
         this.vx = vx;
         this.getX();
     }
+
+    public abstract int getVida();
 
     public int getY() {
         return y;

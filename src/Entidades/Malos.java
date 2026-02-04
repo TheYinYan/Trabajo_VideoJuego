@@ -17,15 +17,20 @@ public class Malos extends Personajes {
 
     @Override
     public void mover(int ancho, int alto) {
-        if (getX() < Bueno.getX()) {
+        if (Bueno == null) {
+          super.mover(ancho, alto);
+          return;
+        }else if (getX() < Bueno.getX()) {
             setVx(1);
         } else if (getX() > Bueno.getX()) {
             setVx(-1);
         } else {
             setVx(0);
         }
-
-        if (getY() < Bueno.getY()) {
+        if (Bueno == null) {
+          super.mover(ancho, alto);
+          return;
+        }else if (getY() < Bueno.getY()) {
             setVy(1);
         } else if (getY() > Bueno.getY()) {
             setVy(-1);
