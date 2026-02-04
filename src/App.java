@@ -53,6 +53,8 @@ public class App {
         int anchura = -1;
         int nPersonajes = -1;
         Entidad[][] arrayEntidades;
+        Personajes[] arrayPersonajes;
+
         if (altura == -1 && anchura == -1 && nPersonajes == -1) {
             // Pedir altura y anchura comprobando si cumplen con los requesitos
             altura = Integer.parseInt(System.console().readLine("Dame el altura del tablero: "));
@@ -67,7 +69,8 @@ public class App {
         }
         // Crear array del tablero y la de Entidades
         arrayEntidades = new Entidad[altura][anchura];
-
+        arrayPersonajes = new Personajes[nPersonajes];
+        
         // Obstaculos
         EntidadesGenerador(altura, anchura, arrayEntidades, 0.01, "Obstaculos");
 
@@ -81,10 +84,13 @@ public class App {
             }
             if (i % 2 == 0) {
                 arrayEntidades[y][x] = new Buenos(y, x);
+                arrayPersonajes[i] = (Personajes) arrayEntidades[y][x];
             } else {
                 arrayEntidades[y][x] = new Malos(y, x);
+                arrayPersonajes[i] = (Personajes) arrayEntidades[y][x];
             }
         }
+
         while (!end) {
             System.out.println(CLEAN_SCREEN);
             // Pintar tablero
@@ -111,6 +117,25 @@ public class App {
             Thread.sleep(1000);
             System.out.println(CLEAN_SCREEN);
 
+            // Asignar Buenos a Malos
+            for (int i = 0; i < nPersonajes; i++) {
+                if (arrayPersonajes[i].getClass() == Malos.class) {
+                    Malos malo = (Malos) arrayPersonajes[i];
+                    double distanciaMin = Double.MAX_VALUE;
+                    Personajes buenoCercano = null;
+                    for (int j = 0; j < nPersonajes; j++) {
+                        if (arrayPersonajes[j].getClass() == Buenos.class) {
+                            double distancia = malo.distaciaCon(arrayPersonajes[j]);
+                            if (distancia < distanciaMin) {
+                                distanciaMin = distancia;
+                                buenoCercano = arrayPersonajes[j];
+                            }
+                        }
+                    }
+                    malo.setBuenos(buenoCercano);
+                }
+            }
+
             for (int i = 0; i < altura; i++) {
                 for (int j = 0; j < anchura; j++) {
                     if (arrayEntidades[i][j] != null) {
@@ -118,20 +143,21 @@ public class App {
                     }
                 }
             }
-            
+
             // Actualizar de la array
-            for(int i = 0; i < altura; i++){
-                for(int j = 0; j < anchura; j++){
-                    if(arrayEntidades[i][j] != null){
+            for (int i = 0; i < altura; i++) {
+                for (int j = 0; j < anchura; j++) {
+                    if (arrayEntidades[i][j] != null) {
                         Entidad entidad = arrayEntidades[i][j];
                         int auxX = entidad.getX();
                         int auxY = entidad.getY();
-                        if(auxX != j || auxY != i){
-                            if(arrayEntidades[auxY][auxX] == null){
+                        if (auxX != j || auxY != i) {
+                            if (arrayEntidades[auxY][auxX] == null) {
                                 arrayEntidades[auxY][auxX] = entidad;
                                 arrayEntidades[i][j] = null;
                             } else {
                                 // Para implementar colosiones
+
                             }
                         }
                     }

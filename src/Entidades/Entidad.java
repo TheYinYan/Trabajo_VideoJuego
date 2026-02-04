@@ -2,11 +2,11 @@ package Entidades;
 
 public class Entidad {
     // Posición
-    private int y;
-    private int x;
+    protected int y;
+    protected int x;
     // Velocidad
-    private int vy;
-    private int vx;
+    protected int vy;
+    protected int vx;
 
     protected Entidad(int y, int x, int vx, int vy) {
         this.y = y;
@@ -32,19 +32,27 @@ public class Entidad {
         return vx;
     }
 
-    public double distaciaCon(Entidad Ent){
-        return Math.sqrt(Math.pow(this.getX()-Ent.getX(), 2) + Math.pow(this.getY()-Ent.getY(), 2));
+    public void setVy(int vy) {
+        this.vy = vy;
     }
 
-    public void mover(int ancho, int alto){
+    public void setVx(int vx) {
+        this.vx = vx;
+    }
+
+    public double distaciaCon(Entidad Ent) {
+        return Math.sqrt(Math.pow(this.getX() - Ent.getX(), 2) + Math.pow(this.getY() - Ent.getY(), 2));
+    }
+
+    public void mover(int ancho, int alto) {
         x += vx;
         y += vy;
 
-        if(x < 0 || x >= ancho){
+        if (x < 0 || x >= ancho) {
             vx = -vx;
             x += vx;
         }
-        if(y < 0 || y >= alto){
+        if (y < 0 || y >= alto) {
             vy = -vy;
             y += vy;
         }
