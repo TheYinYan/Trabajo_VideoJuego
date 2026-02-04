@@ -18,6 +18,8 @@ public class App {
         return atrbuto;
     }
 
+
+
     public static void main(String[] args) throws Exception {
         boolean end = false;
         int altura = -1;
@@ -38,7 +40,7 @@ public class App {
         }
 
         // Obstaculos
-        // nObst Aleatorio (int)(Math.random()*((capacidad*2)*0.01) + 1)
+        // int nObst = (int)(Math.random()*((anchura*aç)*0.01) + 1)
         // Aumentar arrayEntidades = new Personajes[nPersonajes+nObst];
 
         // Crear array del tablero y la de Entidades
