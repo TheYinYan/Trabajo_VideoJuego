@@ -118,6 +118,26 @@ public class App {
                     }
                 }
             }
+            
+            // Actualizar de la array
+            for(int i = 0; i < altura; i++){
+                for(int j = 0; j < anchura; j++){
+                    if(arrayEntidades[i][j] != null){
+                        Entidad entidad = arrayEntidades[i][j];
+                        int auxX = entidad.getX();
+                        int auxY = entidad.getY();
+                        if(auxX != j || auxY != i){
+                            if(arrayEntidades[auxY][auxX] == null){
+                                arrayEntidades[auxY][auxX] = entidad;
+                                arrayEntidades[i][j] = null;
+                            } else {
+                                // Para implementar colosiones
+                            }
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

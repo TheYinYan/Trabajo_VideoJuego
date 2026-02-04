@@ -1,7 +1,5 @@
 package Entidades;
 
-import javax.swing.text.Position;
-
 public class Entidad {
     // Posición
     private int y;
@@ -39,16 +37,16 @@ public class Entidad {
     }
 
     public void mover(int ancho, int alto){
-        this.x += this.vx;
-        this.y += this.vy;
+        x += vx;
+        y += vy;
 
-        if(this.x < 0 || this.x >= ancho){
-            this.vx = -this.vx;
-            this.x += this.vx;
+        if(x < 0 || x >= ancho){
+            vx = -vx;
+            x += this.vx;
         }
-        if(this.y < 0 || this.y >= alto){
-            this.vy = -this.vy;
-            this.y += this.vy;
+        if(y < 0 || y >= alto){
+            vy = -vy;
+            y += vy;
         }
 
     }
