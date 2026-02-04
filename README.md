@@ -3,6 +3,8 @@
 ## Notas para actualizar
 
 - Que se persigan Malos y Buenos
+- Que los Personajes esquiven a los obtaculos
+- Colisiones entre los Personajes
 - Agregar que el usuario puede elegir si hay más buenos que malos y viceversa o (mitad y mitad)
 
 ## Codigo Java del MAIN  
