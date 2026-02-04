@@ -2,7 +2,6 @@
 
 ## Notas para actualizar
 
-- Falta crear la entidad muros
 - Falta el movimiento 
 - Que se persigan Malos y Buenos
 - Agregar que el usuario puede elegir si hay más buenos que malos y viceversa o (mitad y mitad)
