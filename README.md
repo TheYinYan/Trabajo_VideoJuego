@@ -2,13 +2,6 @@
 
 ## Notas para actualizar
 
-- Pedir altura
-- Pedir Anchura
-- Crear un solo Array de Entidades y quitar los otros
-- Cabiar la forma de imprimir el tablero:
-    - Exterior imprimirlo con codigo ansi
-    - Imprimir la parte de ariba en un for diferente
-    - y hace que cuando  llege a la columna final y si es la fila final la esquina
 
 ## Codigo Java del MAIN  
 

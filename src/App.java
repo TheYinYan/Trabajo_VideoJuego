@@ -20,15 +20,17 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         boolean end = false;
-        int capacidad = -1;
+        int altura = -1;
+        int anchura = -1;
         int nPersonajes = -1;
-        int[][] tablero;
-        Entidad[] arrayEntidades;
-        // Pedir altura y anchura
-        if (capacidad == -1 && nPersonajes == -1) {
-            // Pedir Capacidad y comprobar si la capacidad cumple con los requesitos
-            capacidad = Integer.parseInt(System.console().readLine("Dame el capacidad del tablero: "));
-            coprobaciones(capacidad, "capacidad del tablero");
+        Entidad[][] arrayEntidades;
+        if (altura == -1 && anchura == -1 && nPersonajes == -1) {
+            // Pedir altura y anchura comprobando si cumplen con los requesitos
+            altura = Integer.parseInt(System.console().readLine("Dame el altura del tablero: "));
+            coprobaciones(altura, "altura del tablero");
+            anchura = Integer.parseInt(System.console().readLine("Dame el anchura del tablero: "));
+            coprobaciones(anchura, "anchura del tablero");
+
             // Pedir numeros de Personajes y Comprobar si la nPersonajes cumple con los
             // requesitos
             nPersonajes = Integer.parseInt(System.console().readLine("Dame el numero de personajes: "));
@@ -40,44 +42,43 @@ public class App {
         // Aumentar arrayEntidades = new Personajes[nPersonajes+nObst];
 
         // Crear array del tablero y la de Entidades
-        tablero = new int[capacidad][capacidad];
-        arrayEntidades = new Personajes[nPersonajes];
-
+        arrayEntidades = new Personajes[altura][anchura];
         // Rellenar Array de Entidades y Tablero
-        for (int i = 0; i < arrayEntidades.length; i++) {
-            int x = (int) (Math.random() * capacidad);
-            int y = (int) (Math.random() * capacidad);
-            while (tablero[x][y] == 1 || tablero[x][y] == 2) {
-                x = (int) (Math.random() * capacidad);
-                y = (int) (Math.random() * capacidad);
+        for (int i = 0; i < nPersonajes; i++) {
+            int x = (int) (Math.random() * anchura);
+            int y = (int) (Math.random() * altura);
+            while (arrayEntidades[y][x] != null) {
+                x = (int) (Math.random() * anchura);
+                y = (int) (Math.random() * altura);
             }
             if (i % 2 == 0) {
-                arrayEntidades[i] = new Buenos(y, x);
-                tablero[x][y] = 2;
+                arrayEntidades[y][x] = new Buenos(y, x);
             } else {
-                arrayEntidades[i] = new Malos(y, x);
-                tablero[x][y] = 1;
+                arrayEntidades[y][x] = new Malos(y, x);
             }
         }
         while (!end) {
             // Pintar tablero
-            for (int i = -1; i <= capacidad; i++) {
-                for (int j = -1; j <= capacidad; j++) {
-                    if (i == -1) {
-                        System.out.printf("%s", (j == -1) ? "-" : (j == capacidad) ? "-" : "-");
-                    } else if (i == capacidad)
-                        System.out.printf("%s", (j == -1) ? "-" : (j == capacidad) ? "-" : "-");
-                    else {
-                        System.out.printf("%s",
-                                (j == -1) ? "|"
-                                        : (j == capacidad) ? "|"
-                                                : (tablero[i][j]) == 1 ? "M"
-                                                        : (tablero[i][j]) == 2 ? "B" 
-                                                            : (tablero[i][j]) == 3 ? "*" : " ");
+            System.out.print("╔");
+            for (int i = 0; i <= anchura; i++) {
+                System.out.print("═");
+            }
+            System.out.println("╗");
+            for (int i = 0; i < altura; i++) {
+                for (int j = 0; j < anchura; j++) {
+                    if (j == 0) {
+                        System.out.print("║ ");
+                    } else {
+                        System.out.printf("%s", (arrayEntidades[i][j] == null) ? " " :arrayEntidades[i][j]);
                     }
                 }
-                System.out.println();
+                System.out.println(" ║");
             }
+            System.out.print("╚");
+            for (int i = 0; i <= anchura; i++) {
+                System.out.print("═");
+            }
+            System.out.println("╝");
             Thread.sleep(1500);
             System.out.println(CLEAN_SCREEN);
         }
