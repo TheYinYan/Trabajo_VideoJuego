@@ -2,6 +2,7 @@ import Entidades.Personajes;
 import Entidades.Buenos;
 import Entidades.Entidad;
 import Entidades.Malos;
+import Entidades.Obstaculos;
 
 public class App {
     public static final String CLEAN_SCREEN = "\033[H\033[2J";
@@ -18,7 +19,31 @@ public class App {
         return atrbuto;
     }
 
-
+    private static void EntidadesGenerador(int altura, int anchura, Entidad[][] nameArray, double NumeroEnt, String nombreEnt) {
+        int area = altura * anchura;
+        int nEnt = (int) (Math.random() * (area * NumeroEnt) + 1);
+        for (int i = 0; i < nEnt; i++) {
+            int x = (int) (Math.random() * anchura);
+            int y = (int) (Math.random() * altura);
+            while (nameArray[y][x] != null) {
+                x = (int) (Math.random() * anchura);
+                y = (int) (Math.random() * altura);
+            }
+            switch (nombreEnt) {
+                case "Obstaculos":
+                    nameArray[y][x] = new Obstaculos(y, x);
+                    break;
+                case "Malos":
+                    nameArray[y][x] = new Obstaculos(y, x);
+                    break;
+                case "Buenos":
+                    nameArray[y][x] = new Buenos(y, x);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 
     public static void main(String[] args) throws Exception {
         boolean end = false;
@@ -33,18 +58,16 @@ public class App {
             anchura = Integer.parseInt(System.console().readLine("Dame el anchura del tablero: "));
             coprobaciones(anchura, "anchura del tablero");
 
-            // Pedir numeros de Personajes y Comprobar si la nPersonajes cumple con los
-            // requesitos
+            // Pedir numeros de Personajes y Comprobar si la nPersonajes cumple con los requesitos
             nPersonajes = Integer.parseInt(System.console().readLine("Dame el numero de personajes: "));
             coprobaciones(nPersonajes, "numero de personajes");
         }
+        // Crear array del tablero y la de Entidades
+        arrayEntidades = new Entidad[altura][anchura];
 
         // Obstaculos
-        // int nObst = (int)(Math.random()*((anchura*aç)*0.01) + 1)
-        // Aumentar arrayEntidades = new Personajes[nPersonajes+nObst];
+        EntidadesGenerador(altura,anchura,arrayEntidades,0.01,"Obstaculos");
 
-        // Crear array del tablero y la de Entidades
-        arrayEntidades = new Personajes[altura][anchura];
         // Rellenar Array de Entidades y Tablero
         for (int i = 0; i < nPersonajes; i++) {
             int x = (int) (Math.random() * anchura);
@@ -71,7 +94,7 @@ public class App {
                     if (j == 0) {
                         System.out.print("║ ");
                     } else {
-                        System.out.printf("%s", (arrayEntidades[i][j] == null) ? " " :arrayEntidades[i][j]);
+                        System.out.printf("%s", (arrayEntidades[i][j] == null) ? " " : arrayEntidades[i][j]);
                     }
                 }
                 System.out.println(" ║");

@@ -2,9 +2,8 @@ package Entidades;
 
 public class Obstaculos extends Entidad {
 
-    protected Obstaculos(int y, int x) {
+    public Obstaculos(int y, int x) {
         super(y, x, 0, 0);
-
     }
 
     @Override
