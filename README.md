@@ -2,13 +2,17 @@
 
 ## Notas para actualizar
 
+- Falta crear la entidad muros
+- Falta el movimiento 
+- Que se persigan Malos y Buenos
+- Agregar que el usuario puede elegir si hay más buenos que malos y viceversa o (mitad y mitad)
 
 ## Codigo Java del MAIN  
 
-1. Pedir Por consola el **tamaño del Tablero**
+1. Pedir Por consola el **Anchura y altura del Tablero**
     - *Comprobando que el nuemero introducido:*
         - Sea mayor que 0
-        - Sea un numero par para hacer el tablero en forma de cuadrado 
+        - Sea un numero par
 
 2. Pedir Por consola el **Nº Personajes**
     - De los cuales la mitad son **buenos** y la otra mitad son **malos** 
@@ -16,12 +20,7 @@
         - Sea mayor que 0
         - Sea un numero par para la mitad **buenos** y midad **malos**
 
-3. Crear array del **tablero** con el **tamaño del Tablero** recibido 
-
-4. Crear array de los **Personajes** con el **Nº Personajes** recibido
-
-Los **Malos** son el numero 1 <br>
-Los **Buenos** el numero 2
+3. Crear array del **tablero** con los datos recibidos  
 
 ## Clase Entidad 
 ### Atributos: 
