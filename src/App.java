@@ -66,8 +66,6 @@ public class App {
                                 Buenos bueno = (Buenos) arrayPersonajes[i];
                                 distancia = bueno.distaciaCon(arrayPersonajes[j]);
                                 break;
-                            default:
-                                break;
                         }
                         if (distancia < distanciaMin) {
                             distanciaMin = distancia;
@@ -83,8 +81,6 @@ public class App {
                     case "Buenos":
                         Buenos bueno = (Buenos) arrayPersonajes[i];
                         bueno.setMalos(entidadCerca);
-                        break;
-                    default:
                         break;
                 }
             }
