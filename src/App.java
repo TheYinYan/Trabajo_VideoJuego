@@ -6,8 +6,7 @@ import Entidades.Obstaculos;
 
 public class App {
     public static final String CLEAN_SCREEN = "\033[H\033[2J";
-    
-    
+
     public static int coprobaciones(int atributo, String nombre) {
         while (atributo <= 0 || atributo % 2 != 0) {
             if (atributo <= 0)
@@ -19,6 +18,7 @@ public class App {
         }
         return atributo;
     }
+
     // Generador de entidades
     private static void EntidadesGenerador(int altura, int anchura, Entidad[][] nameArray, double NumeroEnt,
             String nombreEnt) {
@@ -110,6 +110,14 @@ public class App {
             System.out.println("╝");
             Thread.sleep(1500);
             System.out.println(CLEAN_SCREEN);
+
+            for (int i = 0; i < altura; i++) {
+                for (int j = 0; j < anchura; j++) {
+                    if (arrayEntidades[i][j] != null) {
+                        arrayEntidades[i][j].mover(anchura, altura);
+                    }
+                }
+            }
         }
     }
 }
