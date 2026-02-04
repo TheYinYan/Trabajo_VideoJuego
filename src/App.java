@@ -47,6 +47,51 @@ public class App {
         }
     }
 
+    // Asignar Personajes Cercanos
+    private static void asignarPersonajesCercanos(int nPersonajes, Personajes[] arrayPersonajes, String tipoPersonaje,
+            String tipoPersonajeCerca) {
+        for (int i = 0; i < nPersonajes; i++) {
+            if (arrayPersonajes[i].getClass().getSimpleName().equals(tipoPersonaje)) {
+                double distanciaMin = Double.MAX_VALUE;
+                Personajes entidadCerca = null;
+                for (int j = 0; j < nPersonajes; j++) {
+                    if (arrayPersonajes[j].getClass().getSimpleName().equals(tipoPersonajeCerca)) {
+                        double distancia = 0;
+                        switch (tipoPersonaje) {
+                            case "Malos":
+                                Malos malo = (Malos) arrayPersonajes[i];
+                                distancia = malo.distaciaCon(arrayPersonajes[j]);
+                                break;
+                            case "Buenos":
+                                Buenos bueno = (Buenos) arrayPersonajes[i];
+                                distancia = bueno.distaciaCon(arrayPersonajes[j]);
+                                break;
+                            default:
+                                break;
+                        }
+                        if (distancia < distanciaMin) {
+                            distanciaMin = distancia;
+                            entidadCerca = arrayPersonajes[j];
+                        }
+                    }
+                }
+                switch (tipoPersonaje) {
+                    case "Malos":
+                        Malos malo = (Malos) arrayPersonajes[i];
+                        malo.setBuenos(entidadCerca);
+                        break;
+                    case "Buenos":
+                        Buenos bueno = (Buenos) arrayPersonajes[i];
+                        bueno.setMalos(entidadCerca);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+    }
+
     public static void main(String[] args) throws Exception {
         boolean end = false;
         int altura = -1;
@@ -70,7 +115,7 @@ public class App {
         // Crear array del tablero y la de Entidades
         arrayEntidades = new Entidad[altura][anchura];
         arrayPersonajes = new Personajes[nPersonajes];
-        
+
         // Obstaculos
         EntidadesGenerador(altura, anchura, arrayEntidades, 0.01, "Obstaculos");
 
@@ -117,44 +162,10 @@ public class App {
             Thread.sleep(1000);
             System.out.println(CLEAN_SCREEN);
 
-            // Asignar Buenos a Malos
-            for (int i = 0; i < nPersonajes; i++) {
-                if (arrayPersonajes[i].getClass() == Malos.class) {
-                    Malos malo = (Malos) arrayPersonajes[i];
-                    double distanciaMin = Double.MAX_VALUE;
-                    Personajes buenoCercano = null;
-                    for (int j = 0; j < nPersonajes; j++) {
-                        if (arrayPersonajes[j].getClass() == Buenos.class) {
-                            double distancia = malo.distaciaCon(arrayPersonajes[j]);
-                            if (distancia < distanciaMin) {
-                                distanciaMin = distancia;
-                                buenoCercano = arrayPersonajes[j];
-                            }
-                        }
-                    }
-                    malo.setBuenos(buenoCercano);
-                }
-            }
+            // Asignar Asignacion de Malos a Buneos y viceversa
+            asignarPersonajesCercanos(nPersonajes, arrayPersonajes, "Buenos", "Malos");
+            asignarPersonajesCercanos(nPersonajes, arrayPersonajes, "Malos", "Buenos");
 
-            // Asignar Malos a los Buenos
-            for (int i = 0; i < nPersonajes; i++) {
-                if (arrayPersonajes[i].getClass() == Buenos.class) {
-                    Buenos bueno = (Buenos) arrayPersonajes[i];
-                    double distanciaMin = Double.MAX_VALUE;
-                    Personajes maloCercano = null;
-                    for (int j = 0; j < nPersonajes; j++) {
-                        if (arrayPersonajes[j].getClass() == Malos.class) {
-                            double distancia = bueno.distaciaCon(arrayPersonajes[j]);
-                            if (distancia < distanciaMin) {
-                                distanciaMin = distancia;
-                                maloCercano = arrayPersonajes[j];
-                            }
-                        }
-                    }
-                    bueno.setMalos(maloCercano);
-                }
-            }
-            
             // Mover las Personajes
             for (int i = 0; i < altura; i++) {
                 for (int j = 0; j < anchura; j++) {
