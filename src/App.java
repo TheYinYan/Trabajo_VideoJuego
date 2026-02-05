@@ -207,7 +207,7 @@ public class App {
                                 arrayEntidades[auxY][auxX] = entidad;
                                 arrayEntidades[i][j] = null;
                             }
-                            // Si hay alguien (lucha)
+                            // Si hay personaje (lucha)
                             else if ((arrayEntidades[auxY][auxX] instanceof Malos && entidad instanceof Buenos)
                                     || (arrayEntidades[auxY][auxX] instanceof Buenos && entidad instanceof Malos)) {
                                 System.out.println(CLEAN_SCREEN);
