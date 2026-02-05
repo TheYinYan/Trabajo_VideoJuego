@@ -1,12 +1,15 @@
 package Entidades;
 
 public class Buenos extends Personajes {
+    public static final String VERDE = "\u001B[32m";
+    public static final String RESET = "\033[0m";
+    
     private Personajes Malos;
-        
+
     public Buenos(int y, int x) {
         super(y, x, 1, 1);
     }
-    
+
     public Personajes getMalos() {
         return Malos;
     }
@@ -18,9 +21,9 @@ public class Buenos extends Personajes {
     @Override
     public void mover(int ancho, int alto) {
         if (Malos == null) {
-          super.mover(ancho, alto);
-          return;
-        }else if (getX() < Malos.getX()) {
+            super.mover(ancho, alto);
+            return;
+        } else if (getX() < Malos.getX()) {
             setVx(-1);
         } else if (getX() > Malos.getX()) {
             setVx(1);
@@ -29,9 +32,9 @@ public class Buenos extends Personajes {
         }
 
         if (Malos == null) {
-          super.mover(ancho, alto);
-          return;
-        }else if (getY() < Malos.getY()) {
+            super.mover(ancho, alto);
+            return;
+        } else if (getY() < Malos.getY()) {
             setVy(-1);
         } else if (getY() > Malos.getY()) {
             setVy(1);
@@ -43,6 +46,6 @@ public class Buenos extends Personajes {
 
     @Override
     public String toString() {
-        return String.format("B");
+        return String.format("%s",VERDE+"B"+RESET);
     }
 }

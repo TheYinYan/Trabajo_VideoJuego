@@ -1,6 +1,9 @@
 package Entidades;
 
 public class Malos extends Personajes {
+    public static final String RESET = "\033[0m";
+    public static final String RED = "\033[0;31m";
+
     private Personajes Bueno;
 
     public Malos(int y, int x) {
@@ -18,9 +21,9 @@ public class Malos extends Personajes {
     @Override
     public void mover(int ancho, int alto) {
         if (Bueno == null) {
-          super.mover(ancho, alto);
-          return;
-        }else if (getX() < Bueno.getX()) {
+            super.mover(ancho, alto);
+            return;
+        } else if (getX() < Bueno.getX()) {
             setVx(1);
         } else if (getX() > Bueno.getX()) {
             setVx(-1);
@@ -28,9 +31,9 @@ public class Malos extends Personajes {
             setVx(0);
         }
         if (Bueno == null) {
-          super.mover(ancho, alto);
-          return;
-        }else if (getY() < Bueno.getY()) {
+            super.mover(ancho, alto);
+            return;
+        } else if (getY() < Bueno.getY()) {
             setVy(1);
         } else if (getY() > Bueno.getY()) {
             setVy(-1);
@@ -42,6 +45,6 @@ public class Malos extends Personajes {
 
     @Override
     public String toString() {
-        return String.format("M");
+        return String.format("%s",RED+"M"+RESET);
     }
 }
