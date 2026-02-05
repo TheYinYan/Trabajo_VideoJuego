@@ -3,11 +3,13 @@ package Entidades;
 public class Buenos extends Personajes {
     public static final String VERDE = "\u001B[32m";
     public static final String RESET = "\033[0m";
-    
+
     private Personajes Malos;
+    static private int nBuenos;
 
     public Buenos(int y, int x) {
         super(y, x, 1, 1);
+        nBuenos++;
     }
 
     public Personajes getMalos() {
@@ -16,6 +18,14 @@ public class Buenos extends Personajes {
 
     public void setMalos(Personajes malos) {
         Malos = malos;
+    }
+
+    public static int getnBuenos() {
+        return nBuenos;
+    }
+
+    public static void setnBuenos(int nBuenos) {
+        Buenos.nBuenos = nBuenos;
     }
 
     @Override
@@ -46,6 +56,6 @@ public class Buenos extends Personajes {
 
     @Override
     public String toString() {
-        return String.format("%s",VERDE+"B"+RESET);
+        return String.format("%s", VERDE + "B" + RESET);
     }
 }

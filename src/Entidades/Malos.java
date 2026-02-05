@@ -5,9 +5,12 @@ public class Malos extends Personajes {
     public static final String RED = "\033[0;31m";
 
     private Personajes Bueno;
+    static private int nMalos;
+
 
     public Malos(int y, int x) {
         super(y, x, 1, 1);
+        nMalos++;
     }
 
     public Personajes getBuenos() {
@@ -16,6 +19,14 @@ public class Malos extends Personajes {
 
     public void setBuenos(Personajes buenos) {
         Bueno = buenos;
+    }
+
+    public static int getnMalos() {
+        return nMalos;
+    }
+
+    public static void setnMalos(int nMalos) {
+        Malos.nMalos = nMalos;
     }
 
     @Override

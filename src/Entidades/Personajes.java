@@ -1,6 +1,6 @@
 package Entidades;
 
-public class Personajes extends Entidad {
+public abstract class  Personajes extends Entidad {
     private int vida;
     static private int nPersonajes;
 
@@ -21,4 +21,5 @@ public class Personajes extends Entidad {
     public static void setnPersonajes(int nPersonajes) {
         Personajes.nPersonajes = nPersonajes;
     }
-}
+
+ }

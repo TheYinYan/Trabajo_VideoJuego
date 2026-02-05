@@ -6,6 +6,10 @@ import Entidades.Obstaculos;
 
 public class App {
     public static final String CLEAN_SCREEN = "\033[H\033[2J";
+    public static final String VERDE = "\u001B[32m";
+    public static final String RED = "\033[0;31m";
+    public static final String AZUL = "\u001B[34m";
+    public static final String RESET = "\033[0m";
 
     public static int coprobaciones(int atributo, String nombre) {
         while (atributo <= 0 || atributo % 2 != 0) {
@@ -103,12 +107,22 @@ public class App {
                 arrayPersonajes[i] = null;
 
                 Personajes.setnPersonajes(Personajes.getnPersonajes() - 1);
+                if (entidad instanceof Buenos) {
+                    Buenos.setnBuenos(Buenos.getnBuenos() - 1);
+                } else {
+                    Malos.setnMalos(Malos.getnMalos() - 1);
+                }
+
                 // Eliminar de arrayEntidades
                 arrayEntidades[y][x] = null;
                 break;
             }
         }
     }
+
+    // private boolean GameOver(int nMalos, int nBuenos){
+
+    // }
 
     public static void main(String[] args) throws Exception {
         boolean end = false;
@@ -153,10 +167,14 @@ public class App {
             }
         }
 
-        while (!end) {
+        do {
+
             System.out.println(CLEAN_SCREEN);
             // Pintar tablero
-            System.out.println(Entidades.Personajes.getnPersonajes() + " Personajes restantes");
+            System.out.printf("%s Total de Personajes %d %s | %s Buenos: %d %s | %s Malos: %d %s %n", AZUL,
+                    Personajes.getnPersonajes(), RESET,
+                    VERDE, Buenos.getnBuenos(), RESET, RED, Malos.getnMalos(), RESET);
+
             System.out.print("╔");
             for (int i = 0; i <= anchura; i++) {
                 System.out.print("═");
@@ -216,17 +234,18 @@ public class App {
                                 int resultado = (int) (Math.random() * (entidad.getVida() + defensor.getVida()));
 
                                 if (resultado < entidad.getVida()) {
-                                    System.out.printf("El %s ha ganado el combate!", entidad.getClass().getSimpleName());
+                                    System.out.printf("El %s ha ganado el combate!%n",
+                                            entidad.getClass().getSimpleName());
                                     Thread.sleep(1000);
 
                                     eliminarPersonaje(nPersonajes, arrayPersonajes, arrayEntidades, defensor, auxX,
                                             auxY);
-
                                     arrayEntidades[auxY][auxX] = entidad;
                                     arrayEntidades[i][j] = null;
 
                                 } else {
-                                    System.out.printf("El %s ha ganado el combate!", defensor.getClass().getSimpleName());
+                                    System.out.printf("El %s ha ganado el combate!%n",
+                                            defensor.getClass().getSimpleName());
                                     Thread.sleep(1000);
 
                                     eliminarPersonaje(nPersonajes, arrayPersonajes, arrayEntidades, entidad, j, i);
@@ -237,6 +256,16 @@ public class App {
                 }
 
             }
-        }
+
+            if (Buenos.getnBuenos() <= 0) {
+                System.out.println(CLEAN_SCREEN);
+                System.out.println("Los Malos han Esterminado a los Buenos");
+                end = true;
+            } else if (Malos.getnMalos() <= 0) {
+                System.out.println(CLEAN_SCREEN);
+                System.out.println("Los Buenos han Sobrvivido a los Malos");
+                end = true;
+            }
+        } while (end == false);
     }
 }
