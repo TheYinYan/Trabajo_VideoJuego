@@ -195,7 +195,7 @@ public class App {
                 System.out.print("═");
             }
             System.out.println("╝");
-            Thread.sleep(1000);
+            Thread.sleep(700);
             System.out.println(CLEAN_SCREEN);
 
             // Asignar Asignacion de Malos a Buneos y viceversa
