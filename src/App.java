@@ -102,19 +102,17 @@ public class App {
     private static void eliminarPersonaje(int nPersonajes, Personajes[] arrayPersonajes, Entidad[][] arrayEntidades,
             Entidad entidad, int x, int y) {
         for (int i = 0; i < nPersonajes; i++) {
-
             if (arrayPersonajes[i] == entidad) {
                 arrayPersonajes[i] = null;
+                arrayEntidades[y][x] = null;
 
                 Personajes.setnPersonajes(Personajes.getnPersonajes() - 1);
                 if (entidad instanceof Buenos) {
                     Buenos.setnBuenos(Buenos.getnBuenos() - 1);
-                } else {
+                } else if (entidad instanceof Malos) {
                     Malos.setnMalos(Malos.getnMalos() - 1);
                 }
 
-                // Eliminar de arrayEntidades
-                arrayEntidades[y][x] = null;
                 break;
             }
         }
@@ -181,14 +179,14 @@ public class App {
             }
             System.out.println("╗");
             for (int i = 0; i < altura; i++) {
-                for (int j = 0; j < anchura; j++) {
-                    if (j == 0) {
+                for (int j = -1; j < anchura; j++) {
+                    if (j == -1) {
                         System.out.print("║ ");
                     } else {
                         System.out.printf("%s", (arrayEntidades[i][j] == null) ? " " : arrayEntidades[i][j]);
                     }
                 }
-                System.out.println(" ║");
+                System.out.println("║");
             }
             System.out.print("╚");
             for (int i = 0; i <= anchura; i++) {
@@ -240,8 +238,8 @@ public class App {
 
                                     eliminarPersonaje(nPersonajes, arrayPersonajes, arrayEntidades, defensor, auxX,
                                             auxY);
-                                    arrayEntidades[auxY][auxX] = entidad;
-                                    arrayEntidades[i][j] = null;
+                                    // arrayEntidades[auxY][auxX] = entidad;
+                                    // arrayEntidades[i][j] = null;
 
                                 } else {
                                     System.out.printf("El %s ha ganado el combate!%n",
