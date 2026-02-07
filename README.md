@@ -8,6 +8,10 @@
 
 - Que los Personajes esquiven a los obtaculos
 - Colisiones entre los Personajes
+- Genaralizar más funciones
+- Llevar todas las funciones del App a otro lado
+- Hacer los Arrays --> ArrayLists
+
 
 ## Codigo Java del MAIN  
 
