@@ -46,7 +46,37 @@ public abstract class Entidad {
         return Math.sqrt(Math.pow(this.getX() - Ent.getX(), 2) + Math.pow(this.getY() - Ent.getY(), 2));
     }
 
-    public void mover(int ancho, int alto) {
+    public boolean colisionaCon(Entidad Ent, int distancia) {
+        return this.distaciaCon(Ent) <= distancia;
+    }
+
+    public void mover(int ancho, int alto, Entidad[][] arrayEntidades) {
+        // Comprovar posicilones y cambiar dirección si es necesario
+
+        int auxX = (int) (Math.random() * 3 - 1);
+        int auxY = (int) (Math.random() * 3 - 1);
+
+        while (auxX == 0 && auxY == 0) {
+            auxX = (int) (Math.random() * 3 - 1);
+            auxY = (int) (Math.random() * 3 - 1);
+        }
+        
+        boolean colision = true;
+
+        while (colision == true) {
+            if (arrayEntidades[auxY][auxX] != null && arrayEntidades[auxY][auxX] != this) {
+                if (this.colisionaCon(arrayEntidades[auxY][auxX], 1)) {
+                    colision = true;
+                    auxX = (int) (Math.random() * 3 - 1);
+                    auxY = (int) (Math.random() * 3 - 1);
+                } else {
+                    colision = false;
+                }
+            } else {
+                colision = false;
+            }
+        }
+
         x += vx;
         y += vy;
 

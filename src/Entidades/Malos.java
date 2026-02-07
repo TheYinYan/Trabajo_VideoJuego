@@ -7,7 +7,6 @@ public class Malos extends Personajes {
     private Personajes Bueno;
     static private int nMalos;
 
-
     public Malos(int y, int x) {
         super(y, x, 1, 1);
         nMalos++;
@@ -30,32 +29,38 @@ public class Malos extends Personajes {
     }
 
     @Override
-    public void mover(int ancho, int alto) {
+    public void mover(int ancho, int alto, Entidad[][] arrayEntidades) {
         if (Bueno == null) {
-            super.mover(ancho, alto);
+            super.mover(ancho, alto, arrayEntidades);
             return;
-        } else if (getX() < Bueno.getX()) {
-            setVx(1);
-        } else if (getX() > Bueno.getX()) {
-            setVx(-1);
-        } else {
-            setVx(0);
+
+        } else if (this.colisionaCon(Bueno, 10)) {
+            if (getX() < Bueno.getX()) {
+                setVx(1);
+            } else if (getX() > Bueno.getX()) {
+                setVx(-1);
+            } else {
+                setVx(0);
+            }
         }
+
         if (Bueno == null) {
-            super.mover(ancho, alto);
+            super.mover(ancho, alto, arrayEntidades);
             return;
-        } else if (getY() < Bueno.getY()) {
-            setVy(1);
-        } else if (getY() > Bueno.getY()) {
-            setVy(-1);
-        } else {
-            setVy(0);
+        } else if (this.colisionaCon(Bueno, 10)) {
+            if (getY() < Bueno.getY()) {
+                setVy(1);
+            } else if (getY() > Bueno.getY()) {
+                setVy(-1);
+            } else {
+                setVy(0);
+            }
         }
-        super.mover(ancho, alto);
+        super.mover(ancho, alto, arrayEntidades);
     }
 
     @Override
     public String toString() {
-        return String.format("%s",RED+"M"+RESET);
+        return String.format("%s", RED + "M" + RESET);
     }
 }

@@ -204,7 +204,7 @@ public class App {
             for (int i = 0; i < altura; i++) {
                 for (int j = 0; j < anchura; j++) {
                     if (arrayEntidades[i][j] != null) {
-                        arrayEntidades[i][j].mover(anchura, altura);
+                        arrayEntidades[i][j].mover(anchura, altura, arrayEntidades);
                     }
                 }
             }
