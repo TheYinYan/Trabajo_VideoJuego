@@ -4,6 +4,7 @@
 
 ### Importante 
 
+- Crear funcion que reste 1 N **Personajes** , **buenos** y **malos**
 - Modificar la función mover de **Entidad**
 - Agregar que el usuario puede elegir si hay más buenos que malos y viceversa o (mitad y mitad)
 
