@@ -46,7 +46,7 @@ public abstract class Entidad {
         return Math.sqrt(Math.pow(this.getX() - Ent.getX(), 2) + Math.pow(this.getY() - Ent.getY(), 2));
     }
 
-    public boolean colisionaCon(Entidad Ent, int distancia) {
+    public boolean estaCercaDe(Entidad Ent, int distancia) {
         return this.distaciaCon(Ent) <= distancia;
     }
 
@@ -65,7 +65,7 @@ public abstract class Entidad {
 
         while (colision == true) {
             if (arrayEntidades[auxY][auxX] != null && arrayEntidades[auxY][auxX] != this) {
-                if (this.colisionaCon(arrayEntidades[auxY][auxX], 1)) {
+                if (this.estaCercaDe(arrayEntidades[auxY][auxX], 1)) {
                     colision = true;
                     auxX = (int) (Math.random() * 3 - 1);
                     auxY = (int) (Math.random() * 3 - 1);

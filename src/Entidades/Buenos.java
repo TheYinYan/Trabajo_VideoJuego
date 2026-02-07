@@ -33,7 +33,7 @@ public class Buenos extends Personajes {
         if (Malos == null) {
             super.mover(ancho, alto, arrayEntidades);
             return;
-        } else if (this.colisionaCon(Malos, 10)) {
+        } else if (this.estaCercaDe(Malos, 10)) {
             if (getX() < Malos.getX()) {
                 setVx(-1);
             } else if (getX() > Malos.getX()) {
@@ -45,7 +45,7 @@ public class Buenos extends Personajes {
         if (Malos == null) {
             super.mover(ancho, alto, arrayEntidades);
             return;
-        } else if (this.colisionaCon(Malos, 10)) {
+        } else if (this.estaCercaDe(Malos, 10)) {
             if (getY() < Malos.getY()) {
                 setVy(-1);
             } else if (getY() > Malos.getY()) {
