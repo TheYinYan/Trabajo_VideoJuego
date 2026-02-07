@@ -4,9 +4,9 @@
 
 ### Importante 
 
-- Crear funcion que reste 1 a N **Personajes**, **buenos** y **malos**
+- Crear funcion que reste 1 a N **Personajes**, **Buenos** y **Malos**
 - Modificar la función mover de **Entidad**
-- Agregar que el usuario puede elegir si hay más buenos que malos y viceversa o (mitad y mitad)
+- Agregar que el usuario puede elegir si hay más **Buenos** que **Malos** y viceversa o (mitad y mitad)
 
 ### Mejorar 
 
@@ -21,16 +21,16 @@
 
 ### Funcionamiento 
 
-1. Pedir Por consola el **Anchura y altura del Tablero**
-    - *Comprobando que el nuemero introducido:*
+1. Pedir Por consola el **anchura y altura del tablero**
+    - *Comprobando que el número introducido:*
         - Sea mayor que 0
         - Sea un número par
 
 2. Pedir Por consola el **Nº Personajes**
-    - De los cuales la mitad son **buenos** y la otra mitad son **malos** 
-    - *Comprobando que el nuemero introducido:*
+    - De los cuales la mitad son **Buenos** y la otra mitad son **Malos** 
+    - *Comprobando que el número introducido:*
         - Sea mayor que 0
-        - Sea un número par para la mitad **buenos** y mitad **malos**
+        - Sea un número par para la mitad **Buenos** y mitad **Malos**
 
 3. Crear de forma aleatoria los obstáculos en función de las dimensiones del tablero
 
@@ -42,15 +42,15 @@
 
 7. **Actualizar de el array** se comprueba **arrayEntidades** para saber si:
     
-    - La posicion esta libre moverse
-    - La posicion esta ocupada por un **Personaje** de distinto tipo pelear
+    - La posición esta libre se moverse
+    - La posición esta ocupada por un **Personaje** de distinto tipo pelear
 
 8. **Pelear** es sumar las vidas de los **Personaje** y aleatorizarla un resultado con ella haciedo que si:
 
-    - La vida es menor que el atacante gana él.
-    - La vida es menor que el atacante gana el defensor.
+    - El resultado es menor que la vida del atacante gana él.
+    - El resultado es menor que la vida del atacante gana el defensor.
 
-9. Comprovar el número de Personajes **buenos** y **malos**  para saber quien gana si no, se sigue el código
+9. Comprobar el número de Personajes **Buenos** y **Malos**  para saber quien gana si no, se sigue el código
 
 
 ### Atributos static
@@ -70,9 +70,9 @@
 - **vx** -> Velocidad horizontal
 
 ### Funciones
--  **Getters y Setters (y - x - vy - vx )** --> Optienes y modificas esos **Atributos**
-- **distaciaCon** -> Opciones la distacia con otro **Entidad**
-- **estaCercaDe** -> Te devuelve **true** o **false** si esta a la cerca de la distancia proporcionada
+-  **Getters y Setters (y - x - vy - vx )** --> Obtienes y modificas esos **Atributos**
+- **distaciaCon** -> Opciones la distancia con otro **Entidad**
+- **estaCercaDe** -> Te devuelve **true** o **false** si está cerca de la distancia proporcionada
 - **mover** -> Hace que se mueva la entidad sin tocar **Entidades**
 
 ### Lo Heredan
@@ -83,13 +83,14 @@
 
 ### Atributos: 
 - Atributos heredados de **Entidad**
-- **Vidad** -> el porcentaje de vida del personaje
-- **nPersonajes** -> números de personajes totales 
+- **Vida** -> El porcentaje de vida del personaje
+- **nPersonajes** -> Números de personajes totales 
 
 ### Funciones
 - Atributos heredados de **Personajes**
-- **getVida** -> optienes la **vida** del **Personaje**
-- **getnPersonajes** -> optienes el número **Personaje**
+- **getVida** -> Obtienes la **vida** del **Personaje**
+- **getnPersonajes** -> Obtienes el número de **Personaje**
+- **setnPersonajes** -> Modifica el número de **Personaje**
 
 ### Lo Heredan
 - **Malos**
@@ -99,12 +100,18 @@
 
 ### Atributos 
 - Atributos heredados de **Personajes**
-- Al **bueno** al que persige 
+- **CLEAN_SCREEN** -> Limpia la consola
+- **RED** -> Cambia a color Rojo para el texto
+- Al **Bueno** al que persigue
+- **nMalos** -> Número de **Malos** totales
 
 ### Funciones
 - Funciones heredados de **Personajes**
-- **getBuenos** -> Optienes al **buneo** que persige
-- **setBuenos** -> Modificas al **buneo** que persige
+- **getBuenos** -> Obtienes al **Bueno** que persigue
+- **setBuenos** -> Modificas al **Bueno** que persigue
+- **getnMalos** -> Obtienes el número de **Malos** totales
+- **setnMalos** -> Modificas el número de **Malos** totales
+- **mover** -> Modificar la función **mover** del padre para perseguir al **Bueno** 
 - **toString** -> Como se va a ver cuando lo imprimas
 
 ## Clase Buenos
@@ -113,6 +120,9 @@
 
 ### Funciones
 - Funciones heredados de **Personajes**
-- **getBuenos** -> Optienes al **Malo** al que huye
-- **setBuenos** -> Modificas al **Malo** al que huye
+- **getMalos** -> Obtienes al **Malo** al que huye
+- **setMalos** -> Modificas al **Malo** al que huye
+ **getnBuenos** -> Obtienes el número de **Buenos** totales
+- **setnBuenos** -> Modificas el número de **Buenos** totales
+- **mover** -> Modificar la función **mover** del padre para huir del **Malo** 
 - **toString** -> Como se va a ver cuando lo imprimas
