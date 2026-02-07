@@ -4,6 +4,7 @@
 
 ### Importante 
 
+- Modificar la función mover para que AuxY y AuxX este bien implementada (ya que no hace que se mueva)
 - Crear funcion que reste 1 a N **Personajes**, **Buenos** y **Malos**
 - Modificar la función mover de **Entidad**
 - Agregar que el usuario puede elegir si hay más **Buenos** que **Malos** y viceversa o (mitad y mitad)
