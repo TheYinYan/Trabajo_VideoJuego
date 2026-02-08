@@ -118,10 +118,6 @@ public class App {
         }
     }
 
-    // private boolean GameOver(int nMalos, int nBuenos){
-
-    // }
-
     public static void main(String[] args) throws Exception {
         boolean end = false;
         int altura = -1;
@@ -259,7 +255,7 @@ public class App {
                 end = true;
             } else if (Malos.getnMalos() <= 0) {
                 System.out.println(CLEAN_SCREEN);
-                System.out.println("Los Buenos han Sobrvivido a los Malos");
+                System.out.println("Los Buenos han Sobrevivido a los Malos");
                 end = true;
             }
         } while (end == false);
