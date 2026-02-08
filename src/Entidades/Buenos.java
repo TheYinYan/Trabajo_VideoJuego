@@ -41,11 +41,7 @@ public class Buenos extends Personajes {
             } else {
                 setVx(0);
             }
-        }
-        if (Malos == null) {
-            super.mover(ancho, alto, arrayEntidades);
-            return;
-        } else if (this.estaCercaDe(Malos, 10)) {
+
             if (getY() < Malos.getY()) {
                 setVy(-1);
             } else if (getY() > Malos.getY()) {
@@ -53,8 +49,31 @@ public class Buenos extends Personajes {
             } else {
                 setVy(0);
             }
+            int auxX = x + vx;
+            int auxY = y + vy;
+
+            if (auxX >= 0 && auxX < ancho && auxY >= 0 && auxY < alto) {
+                if (arrayEntidades[auxY][auxX] == null
+                        || !(arrayEntidades[auxY][auxX] instanceof Obstaculos)) {
+                    x = auxX;
+                    y = auxY;
+                    if (x < 0 || x >= ancho) {
+                        vx = -vx;
+                        x += vx;
+                    }
+                    if (y < 0 || y >= alto) {
+                        vy = -vy;
+                        y += vy;
+                    }
+                } else {
+                    super.mover(ancho, alto, arrayEntidades);
+                    return;
+                }
+            }
+        } else {
+            super.mover(ancho, alto, arrayEntidades);
+            return;
         }
-        super.mover(ancho, alto, arrayEntidades);
     }
 
     @Override

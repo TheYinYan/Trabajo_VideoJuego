@@ -203,7 +203,7 @@ public class App {
             // Mover las Personajes
             for (int i = 0; i < altura; i++) {
                 for (int j = 0; j < anchura; j++) {
-                    if (arrayEntidades[i][j] != null) {
+                    if (arrayEntidades[i][j] != null && arrayEntidades[i][j] instanceof Personajes) {
                         arrayEntidades[i][j].mover(anchura, altura, arrayEntidades);
                     }
                 }
@@ -238,8 +238,6 @@ public class App {
 
                                     eliminarPersonaje(nPersonajes, arrayPersonajes, arrayEntidades, defensor, auxX,
                                             auxY);
-                                    // arrayEntidades[auxY][auxX] = entidad;
-                                    // arrayEntidades[i][j] = null;
 
                                 } else {
                                     System.out.printf("El %s ha ganado el combate!%n",

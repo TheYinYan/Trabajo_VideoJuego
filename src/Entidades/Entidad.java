@@ -51,43 +51,25 @@ public abstract class Entidad {
     }
 
     public void mover(int ancho, int alto, Entidad[][] arrayEntidades) {
-        // Comprovar posicilones y cambiar dirección si es necesario
 
-        int auxX = (int) (Math.random() * 3 - 1);
-        int auxY = (int) (Math.random() * 3 - 1);
+        int auxX;
+        int auxY;
+        int intentos = 20;
 
-        while (auxX == 0 && auxY == 0) {
-            auxX = (int) (Math.random() * 3 - 1);
-            auxY = (int) (Math.random() * 3 - 1);
-        }
-        
-        boolean colision = true;
+        boolean posicionValida = false;
+        while (!posicionValida && intentos >= 0) {
 
-        while (colision == true) {
-            if (arrayEntidades[auxY][auxX] != null && arrayEntidades[auxY][auxX] != this) {
-                if (this.estaCercaDe(arrayEntidades[auxY][auxX], 1)) {
-                    colision = true;
-                    auxX = (int) (Math.random() * 3 - 1);
-                    auxY = (int) (Math.random() * 3 - 1);
-                } else {
-                    colision = false;
+            auxX = x + (int) (Math.random() * 3 - 1);
+            auxY = y + (int) (Math.random() * 3 - 1);
+
+            if (auxX >= 0 && auxX < ancho && auxY >= 0 && auxY < alto) {
+                if (arrayEntidades[auxY][auxX] == null) {
+                    posicionValida = true;
+                    x = auxX;
+                    y = auxY;
                 }
-            } else {
-                colision = false;
             }
+            intentos--;
         }
-
-        x += vx;
-        y += vy;
-
-        if (x < 0 || x >= ancho) {
-            vx = -vx;
-            x += vx;
-        }
-        if (y < 0 || y >= alto) {
-            vy = -vy;
-            y += vy;
-        }
-
     }
 }

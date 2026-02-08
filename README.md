@@ -4,19 +4,15 @@
 
 ### Importante 
 
-- Modificar la función mover para que AuxY y AuxX este bien implementada (ya que no hace que se mueva)
-- Crear funcion que reste 1 a N **Personajes**, **Buenos** y **Malos**
-- Modificar la función mover de **Entidad**
+- Modificar la función mover de **Entidad** para que los **Personajes** no se quedan en las esquinas pillados
 - Agregar que el usuario puede elegir si hay más **Buenos** que **Malos** y viceversa o (mitad y mitad)
 
 ### Mejorar 
 
-- Que los Personajes esquiven a los obstáculos
-- Colisiones entre los Personajes
+- Crear funcion que reste 1 a N **Personajes**, **Buenos** y **Malos**
 - Factorizar más funciones
 - Llevar todas las funciones del App a otro lado
 - Hacer los Arrays --> ArrayLists
-
 
 ## Codigo Java del MAIN  
 
