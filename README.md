@@ -69,7 +69,7 @@
 -  **Getters y Setters (y - x - vy - vx )** --> Obtienes y modificas esos **Atributos**
 - **distaciaCon** -> Opciones la distancia con otro **Entidad**
 - **estaCercaDe** -> Te devuelve **true** o **false** si está cerca de la distancia proporcionada
-- **mover** -> Hace que se mueva la entidad sin tocar **Entidades**
+- **mover** -> Hace que se mueva la entidad sin tocar **Entidades**, ni los bordes del tablero
 
 ### Lo Heredan
 - **Personajes**
