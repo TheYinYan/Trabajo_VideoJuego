@@ -4,7 +4,6 @@
 
 ### Importante 
 
-- Modificar la función mover de **Entidad** para que los **Personajes** no se quedan en las esquinas pillados
 - Agregar que el usuario puede elegir si hay más **Buenos** que **Malos** y viceversa o (mitad y mitad)
 
 ### Mejorar 
