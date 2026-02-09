@@ -52,24 +52,38 @@ public abstract class Entidad {
 
     public void mover(int ancho, int alto, Entidad[][] arrayEntidades) {
 
-        int auxX;
-        int auxY;
-        int intentos = 20;
+        int[][] direcciones = {
+                { -1, -1 }, { -1, 0 }, { -1, 1 },
+                { 0, -1 }, { 0, 1 },
+                { 1, -1 }, { 1, 0 }, { 1, 1 }
+        };
 
-        boolean posicionValida = false;
-        while (!posicionValida && intentos >= 0) {
+        // mezclar direcciones
+        for (int i = 0; i < direcciones.length; i++) {
+            int r = (int) (Math.random() * direcciones.length);
+            int[] tmp = direcciones[i];
+            direcciones[i] = direcciones[r];
+            direcciones[r] = tmp;
+        }
 
-            auxX = x + (int) (Math.random() * 3 - 1);
-            auxY = y + (int) (Math.random() * 3 - 1);
+        // probar cada dirección una vez
+        for (int[] d : direcciones) {
 
-            if (auxX >= 0 && auxX < ancho && auxY >= 0 && auxY < alto) {
-                if (arrayEntidades[auxY][auxX] == null) {
-                    posicionValida = true;
-                    x = auxX;
-                    y = auxY;
-                }
-            }
-            intentos--;
+            int auxX = x + d[0];
+            int auxY = y + d[1];
+
+            // comprobar límites primero
+            if (auxX < 0 || auxX >= ancho || auxY < 0 || auxY >= alto)
+                continue;
+
+            // comprobar obstáculo
+            if (arrayEntidades[auxY][auxX] instanceof Obstaculos)
+                continue;
+
+            // mover
+            x = auxX;
+            y = auxY;
+            return;
         }
     }
 }
