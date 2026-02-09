@@ -58,7 +58,7 @@ public abstract class Entidad {
                 { 1, -1 }, { 1, 0 }, { 1, 1 }
         };
 
-        // mezclar direcciones
+        // Aleatorizar direcciones
         for (int i = 0; i < direcciones.length; i++) {
             int r = (int) (Math.random() * direcciones.length);
             int[] tmp = direcciones[i];
@@ -66,7 +66,7 @@ public abstract class Entidad {
             direcciones[r] = tmp;
         }
 
-        // probar cada dirección una vez
+        // Comprobar cada dirección una vez
         for (int[] d : direcciones) {
 
             int auxX = x + d[0];
