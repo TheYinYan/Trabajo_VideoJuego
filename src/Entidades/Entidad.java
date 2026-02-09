@@ -72,15 +72,12 @@ public abstract class Entidad {
             int auxX = x + d[0];
             int auxY = y + d[1];
 
-            // comprobar límites primero
             if (auxX < 0 || auxX >= ancho || auxY < 0 || auxY >= alto)
                 continue;
 
-            // comprobar obstáculo
             if (arrayEntidades[auxY][auxX] instanceof Obstaculos)
                 continue;
 
-            // mover
             x = auxX;
             y = auxY;
             return;
