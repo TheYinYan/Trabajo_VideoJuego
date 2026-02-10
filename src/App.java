@@ -12,7 +12,8 @@ public class App {
         int altura = -1;
         int anchura = -1;
         int nPersonajes = -1;
-
+        int porBuenos = 0;
+        int porMalos = 0;
         Entidad[][] arrayEntidades;
         Personajes[] arrayPersonajes;
 
@@ -22,7 +23,9 @@ public class App {
             Funciones.coprobaciones(altura, "altura del tablero");
             anchura = Integer.parseInt(System.console().readLine("Dame el anchura del tablero: "));
             Funciones.coprobaciones(anchura, "anchura del tablero");
-            nPersonajes = Funciones.menu(nPersonajes, altura, anchura);
+            porBuenos = Funciones.numPorcent(altura, anchura);
+            porMalos = Funciones.numPorcent(altura, anchura);
+            nPersonajes = Funciones.menu(nPersonajes, altura, anchura, porBuenos, porMalos);
         }
         // Crear array del tablero y la de Entidades
         arrayEntidades = new Entidad[altura][anchura];
@@ -30,7 +33,12 @@ public class App {
 
         // Generar Obstaculos y Personajes
         Funciones.generadorEntidades(altura, anchura, arrayEntidades, 0.01);
-        Funciones.generadorEntidades(altura, anchura, arrayEntidades, arrayPersonajes, nPersonajes);
+        if (Funciones.opcion == 1 || Funciones.opcion == 3) {
+            Funciones.generadorEntidades(altura, anchura, arrayEntidades, arrayPersonajes, nPersonajes);
+        } else if (Funciones.opcion == 2) {
+            Funciones.generadorEntidades(altura, anchura, arrayEntidades, arrayPersonajes, porBuenos, "Buenos");
+            Funciones.generadorEntidades(altura, anchura, arrayEntidades, arrayPersonajes, porMalos, "Malos");
+        }
 
         do {
             System.out.println(CLEAN_SCREEN);

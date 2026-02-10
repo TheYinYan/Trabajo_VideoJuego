@@ -12,27 +12,30 @@ public class Funciones {
     public static final String RED = "\033[0;31m";
     public static final String AZUL = "\u001B[34m";
     public static final String RESET = "\033[0m";
+    public static int opcion;
 
-    public static int menu(int nPersonajes, int altura, int anchura) {
+    public static int numPorcent(int altura, int anchura) {
+        int area = altura * anchura;
+        return (int) (Math.random() * (area * 0.005) + 1);
+    }
+
+    public static int menu(int nPersonajes, int altura, int anchura, int porBuenos, int porMalos ) {
         System.out.println("""
-                1. Mitad Buenos y Mitad Malos
-                2. Aleatorios
+            
+                1. Mitad Buenos y Mitad Malos 
+                2. Numero Personaje Aleatorios
+                3. Mitad Buenos y Mitad Malos Aleatorios
                 """);
-        int opcion = Integer.parseInt(System.console().readLine("Opción: "));
+        opcion = Integer.parseInt(System.console().readLine("Opción: "));
         switch (opcion) {
             case 1:
                 nPersonajes = Integer.parseInt(System.console().readLine("Dame el numero de personajes: "));
                 coprobaciones(nPersonajes, "numero de personajes");
                 break;
             case 2:
-                int area = altura * anchura;
-                nPersonajes = (int) (Math.random() * (area * 0.01) + 1);
-                while (nPersonajes % 2 != 0) {
-                    nPersonajes = (int) (Math.random() * (area * 0.01) + 1);
-                }
+                nPersonajes = porMalos + porBuenos;
                 break;
-            default:
-                System.out.println("Opcion no valida, se generaran los personajes aleatoriamente");
+            case 3:
                 int areaDefault = altura * anchura;
                 nPersonajes = (int) (Math.random() * (areaDefault * 0.01) + 1);
                 while (nPersonajes % 2 != 0) {
@@ -85,6 +88,28 @@ public class Funciones {
             } else {
                 arrayEntidades[y][x] = new Malos(y, x);
                 arrayPersonajes[i] = (Personajes) arrayEntidades[y][x];
+            }
+        }
+    }
+
+    public static void generadorEntidades(int altura, int anchura, Entidad[][] arrayEntidades,
+            Personajes[] arrayPersonajes, int nPersonajes, String nameEntidad) {
+
+        for (int i = 0; i < nPersonajes; i++) {
+            int x = (int) (Math.random() * anchura);
+            int y = (int) (Math.random() * altura);
+            while (arrayEntidades[y][x] != null) {
+                x = (int) (Math.random() * anchura);
+                y = (int) (Math.random() * altura);
+            }
+            switch (nameEntidad) {
+                case "Buenos":
+                    arrayEntidades[y][x] = new Buenos(y, x);
+                    arrayPersonajes[i] = (Personajes) arrayEntidades[y][x];
+                    break;
+                case "Malos":
+                    arrayEntidades[y][x] = new Malos(y, x);
+                    arrayPersonajes[i] = (Personajes) arrayEntidades[y][x];
             }
         }
     }
