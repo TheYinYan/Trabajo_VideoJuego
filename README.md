@@ -2,10 +2,6 @@
 
 ## Notas para actualizar
 
-### Importante 
-
-- Agregar que el usuario puede elegir si hay más **Buenos** que **Malos** y viceversa o (mitad y mitad)
-
 ### Mejorar 
 
 - Crear funcion que reste 1 a N **Personajes**, **Buenos** y **Malos**
