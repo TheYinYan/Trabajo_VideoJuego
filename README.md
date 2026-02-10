@@ -1,11 +1,9 @@
 # Trabajo del Video Juego
 
-<!-- ## Notas para actualizar
+## Notas para actualizar
 
-### Mejorar 
-
-- Crear funcion que reste 1 a N **Personajes**, **Buenos** y **Malos**
-- Hacer los Arrays -> ArrayLists  -->
+- Mirar si se pueden Poner Funciones en private o protejido 
+<!-- - Hacer los Arrays -> ArrayLists  -->
 
 ## [Codigo Java del MAIN](src/App.java) 
 
