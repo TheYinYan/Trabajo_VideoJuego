@@ -1,10 +1,8 @@
 package Entidades;
 
 public abstract class Entidad {
-    // Posición
     protected int y;
     protected int x;
-    // Velocidad
     protected int vy;
     protected int vx;
 
