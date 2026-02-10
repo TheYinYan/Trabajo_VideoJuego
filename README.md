@@ -57,12 +57,14 @@
 - **RED** -> Cambia a color Rojo para el texto
 - **AZUL** -> Cambia a color Azul para el texto
 - **RESET** -> Resetea el formato del texto al por defecto
+- **opcion** -> Opciones para el **menu**
 
 ### Funciones
 - **menu** -> Pinta un menu con las opciones de Crear **Personajes**
 - **coprobaciones** -> Comprueba que los número introducido:
     - Sea mayor que 0
     - Sea un número par
+- **generador** -> Dependiendo de la **Opcion** llama a un **generadorEntidades** distinto 
 - **generadorEntidades** -> Genera **Obstaculos** o **Personajes** o **Buenos** y **Malos**, dependiendo:
     - Si introduces un array de **Personajes** y pones el **nameEntidad** genera ese tipo de personaje
     - Si introduces un array de **Personajes** y no pones el **nameEntidad** genera **Buenos** y **Malos**
