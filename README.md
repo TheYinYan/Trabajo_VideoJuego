@@ -16,31 +16,37 @@
         - Sea mayor que 0
         - Sea un número par
 
-2. Pedir Por consola el **Nº Personajes**
-    - De los cuales la mitad son **Buenos** y la otra mitad son **Malos** 
-    - *Comprobando que el número introducido:*
-        - Sea mayor que 0
-        - Sea un número par para la mitad **Buenos** y mitad **Malos**
+2. Eliges **opción:**
+    1. Mitad Buenos y Mitad Malos 
+    2. Numero Personaje Aleatorios
+    3. Mitad Buenos y Mitad Malos Aleatorios
 
-3. Crear de forma aleatoria los obstáculos en función de las dimensiones del tablero
+3. Si **opción**: 
+    - Es **1** pedir por consola el **Nº Personajes**
+        - De los cuales la mitad son **Buenos** y la otra mitad son **Malos** 
+        - *Comprobando que el número introducido*
+    - Es **2** Nª Aleatorios para **Buenos** y Nª Aleatorios para **Malos**
+    - Es **3** Nª Aleatorios de personajes, de los cuales la mitad son **Buenos** y la otra mitad son **Malos**
 
-4. Crear array del **arrayPersonajes** y **arrayEntidades** con los datos recibidos  
+4. Crear de forma aleatoria los obstáculos en función de las dimensiones del tablero
 
-5. Pintar Tablero con las entidades 
+5. Crear array del **arrayPersonajes** y **arrayEntidades** con los datos recibidos  
 
-6. **Mover los Personajes** para que no colisionen con un **Personaje** del mismo tipo o con un **Obstaculo**
+6. Pintar Tablero con las entidades 
 
-7. **Actualizar de el array** se comprueba **arrayEntidades** para saber si:
+7. **Mover los Personajes** para que no colisionen con un **Personaje** del mismo tipo o con un **Obstaculo**
+
+8. **Actualizar de el array** se comprueba **arrayEntidades** para saber si:
     
     - La posición esta libre se moverse
     - La posición esta ocupada por un **Personaje** de distinto tipo pelear
 
-8. **Pelear** es sumar las vidas de los **Personaje** y aleatorizarla un resultado con ella haciedo que si:
+9. **Pelear** es sumar las vidas de los **Personaje** y aleatorizarla un resultado con ella haciedo que si:
 
     - El resultado es menor que la vida del atacante gana él.
     - El resultado es menor que la vida del atacante gana el defensor.
 
-9. Comprobar el número de Personajes **Buenos** y **Malos**  para saber quien gana si no, se sigue el código
+10. Comprobar el número de Personajes **Buenos** y **Malos**  para saber quien gana si no, se sigue el código
 
 
 ### Atributos static
@@ -59,8 +65,9 @@
 - **coprobaciones** -> Comprueba que los número introducido:
     - Sea mayor que 0
     - Sea un número par
-- **generadorEntidades** -> Genera **Obstaculos** o **Personajes**, dependiendo:
-    - Si introduces un array de Personajes, genera **Personajes**
+- **generadorEntidades** -> Genera **Obstaculos** o **Personajes** o **Buenos** y **Malos**, dependiendo:
+    - Si introduces un array de **Personajes** y pones el **nameEntidad** genera ese tipo de personaje
+    - Si introduces un array de **Personajes** y no pones el **nameEntidad** genera **Buenos** y **Malos**
     - Sino genera **Obstaculos**
 - **pintarTablero** -> Pinta el Tablero
 - **asignarPersonajesCercanos** -> Asigna a los personajes otro personaje dependiendo de la distancia
