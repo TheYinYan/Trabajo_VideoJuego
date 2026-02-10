@@ -31,14 +31,7 @@ public class App {
         arrayEntidades = new Entidad[altura][anchura];
         arrayPersonajes = new Personajes[nPersonajes];
 
-        // Generar Obstaculos y Personajes
-        Funciones.generadorEntidades(altura, anchura, arrayEntidades, 0.01);
-        if (Funciones.opcion == 1 || Funciones.opcion == 3) {
-            Funciones.generadorEntidades(altura, anchura, arrayEntidades, arrayPersonajes, nPersonajes);
-        } else if (Funciones.opcion == 2) {
-            Funciones.generadorEntidades(altura, anchura, arrayEntidades, arrayPersonajes, porBuenos, "Buenos");
-            Funciones.generadorEntidades(altura, anchura, arrayEntidades, arrayPersonajes, porMalos, "Malos");
-        }
+        Funciones.generador(altura, anchura, arrayEntidades, arrayPersonajes, nPersonajes, porBuenos);
 
         do {
             System.out.println(CLEAN_SCREEN);

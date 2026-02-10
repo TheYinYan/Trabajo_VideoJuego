@@ -19,10 +19,10 @@ public class Funciones {
         return (int) (Math.random() * (area * 0.005) + 1);
     }
 
-    public static int menu(int nPersonajes, int altura, int anchura, int porBuenos, int porMalos ) {
+    public static int menu(int nPersonajes, int altura, int anchura, int porBuenos, int porMalos) {
         System.out.println("""
-            
-                1. Mitad Buenos y Mitad Malos 
+
+                1. Mitad Buenos y Mitad Malos
                 2. Numero Personaje Aleatorios
                 3. Mitad Buenos y Mitad Malos Aleatorios
                 """);
@@ -58,7 +58,17 @@ public class Funciones {
         return atributo;
     }
 
-    public static void generadorEntidades(int altura, int anchura, Entidad[][] nameArray, double NumeroEnt) {
+    public static void generador(int altura, int anchura , Entidad[][] arrayEntidades, Personajes[] arrayPersonajes, int nPersonajes, int porBuenos) {
+        Funciones.generadorEntidades(altura, anchura, arrayEntidades, 0.01);
+        if (Funciones.opcion == 1 || Funciones.opcion == 3) {
+            Funciones.generadorEntidades(altura, anchura, arrayEntidades, arrayPersonajes, nPersonajes);
+        } else if (Funciones.opcion == 2) {
+            Funciones.generadorEntidades(altura, anchura, arrayEntidades, arrayPersonajes, porBuenos,
+                    nPersonajes);
+        }
+    }
+
+    private static void generadorEntidades(int altura, int anchura, Entidad[][] nameArray, double NumeroEnt) {
         int area = altura * anchura;
         int nEnt = (int) (Math.random() * (area * NumeroEnt) + 1);
         for (int i = 0; i < nEnt; i++) {
@@ -72,7 +82,7 @@ public class Funciones {
         }
     }
 
-    public static void generadorEntidades(int altura, int anchura, Entidad[][] arrayEntidades,
+    private static void generadorEntidades(int altura, int anchura, Entidad[][] arrayEntidades,
             Personajes[] arrayPersonajes, int nPersonajes) {
 
         for (int i = 0; i < nPersonajes; i++) {
@@ -92,8 +102,8 @@ public class Funciones {
         }
     }
 
-    public static void generadorEntidades(int altura, int anchura, Entidad[][] arrayEntidades,
-            Personajes[] arrayPersonajes, int nPersonajes, String nameEntidad) {
+    private static void generadorEntidades(int altura, int anchura, Entidad[][] arrayEntidades,
+            Personajes[] arrayPersonajes, int porcentaje, int nPersonajes) {
 
         for (int i = 0; i < nPersonajes; i++) {
             int x = (int) (Math.random() * anchura);
@@ -102,14 +112,12 @@ public class Funciones {
                 x = (int) (Math.random() * anchura);
                 y = (int) (Math.random() * altura);
             }
-            switch (nameEntidad) {
-                case "Buenos":
-                    arrayEntidades[y][x] = new Buenos(y, x);
-                    arrayPersonajes[i] = (Personajes) arrayEntidades[y][x];
-                    break;
-                case "Malos":
-                    arrayEntidades[y][x] = new Malos(y, x);
-                    arrayPersonajes[i] = (Personajes) arrayEntidades[y][x];
+            if (i <= porcentaje) {
+                arrayEntidades[y][x] = new Buenos(y, x);
+                arrayPersonajes[i] = (Personajes) arrayEntidades[y][x];
+            } else {
+                arrayEntidades[y][x] = new Malos(y, x);
+                arrayPersonajes[i] = (Personajes) arrayEntidades[y][x];
             }
         }
     }
