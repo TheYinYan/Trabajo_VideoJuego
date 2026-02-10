@@ -57,18 +57,13 @@ public class Buenos extends Personajes {
                         || !(arrayEntidades[auxY][auxX] instanceof Obstaculos)) {
                     x = auxX;
                     y = auxY;
-                    if (x < 0 || x >= ancho) {
-                        vx = -vx;
-                        x += vx;
-                    }
-                    if (y < 0 || y >= alto) {
-                        vy = -vy;
-                        y += vy;
-                    }
                 } else {
                     super.mover(ancho, alto, arrayEntidades);
                     return;
                 }
+            } else {
+                super.mover(ancho, alto, arrayEntidades);
+                return;
             }
         } else {
             super.mover(ancho, alto, arrayEntidades);
