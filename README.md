@@ -5,8 +5,6 @@
 ### Mejorar 
 
 - Crear funcion que reste 1 a N **Personajes**, **Buenos** y **Malos**
-- Factorizar más funciones
-- Llevar todas las funciones del App a otro lado
 - Hacer los Arrays --> ArrayLists
 
 ## Codigo Java del MAIN  
