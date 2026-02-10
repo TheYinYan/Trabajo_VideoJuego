@@ -7,7 +7,7 @@
 - Crear funcion que reste 1 a N **Personajes**, **Buenos** y **Malos**
 - Hacer los Arrays -> ArrayLists  -->
 
-## Codigo Java del MAIN  
+## [Codigo Java del MAIN](src/App.java) 
 
 ### Funcionamiento 
 
@@ -46,7 +46,7 @@
 ### Atributos static
 - **CLEAN_SCREEN** -> Limpia la consola
 
-## Clase Funciones 
+## [Clase Funciones](src/Entidades/ListFunciones/Funciones.java)
 
 ### Atributos static
 - **CLEAN_SCREEN** -> Limpia la consola
@@ -68,7 +68,7 @@
 - **movimento** -> Mueve el personaje
 - **terminar** -> Si uno de los **Bunenos** o los **Malos** se quedan sin personajes ganando el contario 
 
-## Clase Entidad 
+## [Clase Entidad](src/Entidades/Entidad.java) 
 
 ### Atributos: 
 - **y** -> Posición vertical 
@@ -86,7 +86,16 @@
 - **Personajes**
 - **Obstaculos**
 
-## Clase Personajes
+## [Clase Obstaculos](src/Entidades/Obstaculos.java)
+
+### Atributos: 
+- Atributos heredados de **Entidad**
+
+### Funciones
+- Funciones heredados de **Personajes**
+- **toString** -> Como se va a ver cuando lo imprimas
+
+## [Clase Personajes](src/Entidades/Personajes.java)
 
 ### Atributos: 
 - Atributos heredados de **Entidad**
@@ -94,7 +103,7 @@
 - **nPersonajes** -> Números de personajes totales 
 
 ### Funciones
-- Atributos heredados de **Personajes**
+- Funciones heredados de **Personajes**
 - **getVida** -> Obtienes la **vida** del **Personaje**
 - **getnPersonajes** -> Obtienes el número de **Personaje**
 - **setnPersonajes** -> Modifica el número de **Personaje**
@@ -103,7 +112,7 @@
 - **Malos**
 - **Buenos**
 
-## Clase Malos
+## [Clase Malos](src/Entidades/Malos.java)
 
 ### Atributos 
 - Atributos heredados de **Personajes**
@@ -121,7 +130,7 @@
 - **mover** -> Modificar la función **mover** del padre para perseguir al **Bueno** 
 - **toString** -> Como se va a ver cuando lo imprimas
 
-## Clase Buenos
+## [Clase Buenos](src/Entidades/Buenos.java)
 - Atributos heredados de **Personajes**
 - El **Malo** del que huye 
 
