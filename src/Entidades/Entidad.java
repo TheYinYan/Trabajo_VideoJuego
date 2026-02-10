@@ -58,10 +58,10 @@ public abstract class Entidad {
 
         // Aleatorizar direcciones
         for (int i = 0; i < direcciones.length; i++) {
-            int r = (int) (Math.random() * direcciones.length);
+            int d = (int) (Math.random() * direcciones.length);
             int[] tmp = direcciones[i];
-            direcciones[i] = direcciones[r];
-            direcciones[r] = tmp;
+            direcciones[i] = direcciones[d];
+            direcciones[d] = tmp;
         }
 
         // Comprobar cada dirección una vez
