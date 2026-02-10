@@ -29,7 +29,7 @@ public class App {
         arrayPersonajes = new Personajes[nPersonajes];
 
         // Generar Obstaculos y Personajes
-        Funciones.generadorEntidades(altura, anchura, arrayEntidades, 0.01, "Obstaculos");
+        Funciones.generadorEntidades(altura, anchura, arrayEntidades, 0.01);
         Funciones.generadorEntidades(altura, anchura, arrayEntidades, arrayPersonajes, nPersonajes);
 
         do {

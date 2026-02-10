@@ -55,9 +55,7 @@ public class Funciones {
         return atributo;
     }
 
-    // Generador de entidades
-    public static void generadorEntidades(int altura, int anchura, Entidad[][] nameArray, double NumeroEnt,
-            String nombreEnt) {
+    public static void generadorEntidades(int altura, int anchura, Entidad[][] nameArray, double NumeroEnt) {
         int area = altura * anchura;
         int nEnt = (int) (Math.random() * (area * NumeroEnt) + 1);
         for (int i = 0; i < nEnt; i++) {
@@ -119,7 +117,6 @@ public class Funciones {
         System.out.println("╝");
     }
 
-    // Asignar Personajes Cercanos
     public static void asignarPersonajesCercanos(int nPersonajes, Personajes[] arrayPersonajes, String tipoPersonaje,
             String tipoPersonajeCerca) {
         for (int i = 0; i < nPersonajes; i++) {
@@ -165,7 +162,6 @@ public class Funciones {
 
     }
 
-    // Eliminar Personaje del arrayPersonajes
     public static void eliminarPersonaje(int nPersonajes, Personajes[] arrayPersonajes, Entidad[][] arrayEntidades,
             Entidad entidad, int x, int y) {
         for (int i = 0; i < nPersonajes; i++) {
