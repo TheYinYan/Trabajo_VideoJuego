@@ -23,8 +23,38 @@ public class App {
         return atributo;
     }
 
+    public static int menu(int nPersonajes, int altura, int anchura) {
+        System.out.println("""
+                1. Mitad Buenos y Mitad Malos
+                2. Aleatorios
+                """);
+        int opcion = Integer.parseInt(System.console().readLine("Opción: "));
+        switch (opcion) {
+            case 1:
+                nPersonajes = Integer.parseInt(System.console().readLine("Dame el numero de personajes: "));
+                coprobaciones(nPersonajes, "numero de personajes");
+                break;
+            case 2:
+                int area = altura * anchura;
+                nPersonajes = (int) (Math.random() * (area * 0.01) + 1);
+                while (nPersonajes % 2 != 0) {
+                    nPersonajes = (int) (Math.random() * (area * 0.01) + 1);
+                }
+                break;
+            default:
+                System.out.println("Opcion no valida, se generaran los personajes aleatoriamente");
+                int areaDefault = altura * anchura;
+                nPersonajes = (int) (Math.random() * (areaDefault * 0.01) + 1);
+                while (nPersonajes % 2 != 0) {
+                    nPersonajes = (int) (Math.random() * (areaDefault * 0.01) + 1);
+                }
+                break;
+        }
+        return nPersonajes;
+    }
+
     // Generador de entidades
-    private static void EntidadesGenerador(int altura, int anchura, Entidad[][] nameArray, double NumeroEnt,
+    private static void generadorEntidades(int altura, int anchura, Entidad[][] nameArray, double NumeroEnt,
             String nombreEnt) {
         int area = altura * anchura;
         int nEnt = (int) (Math.random() * (area * NumeroEnt) + 1);
@@ -35,20 +65,51 @@ public class App {
                 x = (int) (Math.random() * anchura);
                 y = (int) (Math.random() * altura);
             }
-            switch (nombreEnt) {
-                case "Obstaculos":
-                    nameArray[y][x] = new Obstaculos(y, x);
-                    break;
-                case "Malos":
-                    nameArray[y][x] = new Malos(y, x);
-                    break;
-                case "Buenos":
-                    nameArray[y][x] = new Buenos(y, x);
-                    break;
-                default:
-                    break;
+            nameArray[y][x] = new Obstaculos(y, x);
+        }
+    }
+
+    private static void generadorEntidades(int altura, int anchura, Entidad[][] arrayEntidades,
+            Personajes[] arrayPersonajes, int nPersonajes) {
+
+        for (int i = 0; i < nPersonajes; i++) {
+            int x = (int) (Math.random() * anchura);
+            int y = (int) (Math.random() * altura);
+            while (arrayEntidades[y][x] != null) {
+                x = (int) (Math.random() * anchura);
+                y = (int) (Math.random() * altura);
+            }
+            if (i % 2 == 0) {
+                arrayEntidades[y][x] = new Buenos(y, x);
+                arrayPersonajes[i] = (Personajes) arrayEntidades[y][x];
+            } else {
+                arrayEntidades[y][x] = new Malos(y, x);
+                arrayPersonajes[i] = (Personajes) arrayEntidades[y][x];
             }
         }
+    }
+
+    private static void pintarTablero(int altura, int anchura, Entidad[][] arrayEntidades) {
+        System.out.print("╔");
+        for (int i = 0; i <= anchura; i++) {
+            System.out.print("═");
+        }
+        System.out.println("╗");
+        for (int i = 0; i < altura; i++) {
+            for (int j = -1; j < anchura; j++) {
+                if (j == -1) {
+                    System.out.print("║ ");
+                } else {
+                    System.out.printf("%s", (arrayEntidades[i][j] == null) ? " " : arrayEntidades[i][j]);
+                }
+            }
+            System.out.println("║");
+        }
+        System.out.print("╚");
+        for (int i = 0; i <= anchura; i++) {
+            System.out.print("═");
+        }
+        System.out.println("╝");
     }
 
     // Asignar Personajes Cercanos
@@ -81,7 +142,6 @@ public class App {
                             entidadCerca = arrayPersonajes[j];
                         }
                     }
-
                     switch (tipoPersonaje) {
                         case "Malos":
                             Malos malo = (Malos) arrayPersonajes[i];
@@ -123,6 +183,7 @@ public class App {
         int altura = -1;
         int anchura = -1;
         int nPersonajes = -1;
+
         Entidad[][] arrayEntidades;
         Personajes[] arrayPersonajes;
 
@@ -132,63 +193,25 @@ public class App {
             coprobaciones(altura, "altura del tablero");
             anchura = Integer.parseInt(System.console().readLine("Dame el anchura del tablero: "));
             coprobaciones(anchura, "anchura del tablero");
-
-            // Pedir n de Personajes y Comprobar si la nPersonajes cumple con los requesitos
-            nPersonajes = Integer.parseInt(System.console().readLine("Dame el numero de personajes: "));
-            coprobaciones(nPersonajes, "numero de personajes");
+            nPersonajes = menu(nPersonajes, altura, anchura);
         }
         // Crear array del tablero y la de Entidades
         arrayEntidades = new Entidad[altura][anchura];
         arrayPersonajes = new Personajes[nPersonajes];
 
-        // Obstaculos
-        EntidadesGenerador(altura, anchura, arrayEntidades, 0.01, "Obstaculos");
-
-        // Rellenar Array de Entidades y Tablero
-        for (int i = 0; i < nPersonajes; i++) {
-            int x = (int) (Math.random() * anchura);
-            int y = (int) (Math.random() * altura);
-            while (arrayEntidades[y][x] != null) {
-                x = (int) (Math.random() * anchura);
-                y = (int) (Math.random() * altura);
-            }
-            if (i % 2 == 0) {
-                arrayEntidades[y][x] = new Buenos(y, x);
-                arrayPersonajes[i] = (Personajes) arrayEntidades[y][x];
-            } else {
-                arrayEntidades[y][x] = new Malos(y, x);
-                arrayPersonajes[i] = (Personajes) arrayEntidades[y][x];
-            }
-        }
+        // Generar Obstaculos y Personajes
+        generadorEntidades(altura, anchura, arrayEntidades, 0.01, "Obstaculos");
+        generadorEntidades(altura, anchura, arrayEntidades, arrayPersonajes, nPersonajes);
 
         do {
-
             System.out.println(CLEAN_SCREEN);
-            // Pintar tablero
-            System.out.printf("%s Total de Personajes %d %s | %s Buenos: %d %s | %s Malos: %d %s %n", AZUL,
-                    Personajes.getnPersonajes(), RESET,
-                    VERDE, Buenos.getnBuenos(), RESET, RED, Malos.getnMalos(), RESET);
 
-            System.out.print("╔");
-            for (int i = 0; i <= anchura; i++) {
-                System.out.print("═");
-            }
-            System.out.println("╗");
-            for (int i = 0; i < altura; i++) {
-                for (int j = -1; j < anchura; j++) {
-                    if (j == -1) {
-                        System.out.print("║ ");
-                    } else {
-                        System.out.printf("%s", (arrayEntidades[i][j] == null) ? " " : arrayEntidades[i][j]);
-                    }
-                }
-                System.out.println("║");
-            }
-            System.out.print("╚");
-            for (int i = 0; i <= anchura; i++) {
-                System.out.print("═");
-            }
-            System.out.println("╝");
+            System.out.printf("%s Total de Personajes %d %s | %s Buenos: %d %s | %s Malos: %d %s %n", 
+                    AZUL, Personajes.getnPersonajes(), RESET,
+                    VERDE, Buenos.getnBuenos(), RESET, 
+                    RED, Malos.getnMalos(), RESET);
+
+            pintarTablero(altura, anchura, arrayEntidades);
             Thread.sleep(700);
             System.out.println(CLEAN_SCREEN);
 
