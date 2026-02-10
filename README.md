@@ -45,11 +45,28 @@
 
 ### Atributos static
 - **CLEAN_SCREEN** -> Limpia la consola
+
+## Clase Funciones 
+
+### Atributos static
+- **CLEAN_SCREEN** -> Limpia la consola
 - **RED** -> Cambia a color Rojo para el texto
 - **AZUL** -> Cambia a color Azul para el texto
 - **RESET** -> Resetea el formato del texto al por defecto
 
 ### Funciones
+- **menu** -> Pinta un menu con las opciones de Crear **Personajes**
+- **coprobaciones** -> Comprueba que los número introducido:
+    - Sea mayor que 0
+    - Sea un número par
+- **generadorEntidades** -> Genera **Obstaculos** o **Personajes**, dependiendo:
+    - Si introduces un array de Personajes, genera **Personajes**
+    - Sino genera **Obstaculos**
+- **pintarTablero** -> Pinta el Tablero
+- **asignarPersonajesCercanos** -> Asigna a los personajes otro personaje dependiendo de la distancia
+- **eliminarPersonaje** -> Elimina un personaje del ArrayPersonajes y de ArrayEntidades
+- **movimento** -> Mueve el personaje
+- **terminar** -> Si uno de los **Bunenos** o los **Malos** se quedan sin personajes ganando el contario 
 
 ## Clase Entidad 
 
