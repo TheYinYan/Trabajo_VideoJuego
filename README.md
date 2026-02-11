@@ -66,8 +66,8 @@
     - Sea un número par
 - **generador** -> Dependiendo de la **Opcion** llama a un **generadorEntidades** distinto 
 - **generadorEntidades** -> Genera **Obstaculos** o **Personajes** o **Buenos** y **Malos**, dependiendo:
-    - Si introduces un array de **Personajes** y pones el **nameEntidad** genera ese tipo de personaje
-    - Si introduces un array de **Personajes** y no pones el **nameEntidad** genera **Buenos** y **Malos**
+    - Si introduces un array de **Personajes** y pones el **porcentaje** genera ese tipo de personaje
+    - Si introduces un array de **Personajes** y no pones el **porcentaje** genera **Buenos** y **Malos**
     - Sino genera **Obstaculos**
 - **pintarTablero** -> Pinta el Tablero
 - **asignarPersonajesCercanos** -> Asigna a los personajes otro personaje dependiendo de la distancia
