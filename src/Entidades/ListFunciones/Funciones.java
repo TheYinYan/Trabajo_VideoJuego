@@ -17,7 +17,7 @@ public class Funciones {
     public static void titulo(String texto, int espacios) {
         int ancho = espacios + texto.length() + 2;
         String esp = " ";
-        
+
         System.out.println();
         for (int i = 0; i < ancho; i++) {
             System.out.print("*");
@@ -44,7 +44,10 @@ public class Funciones {
     }
 
     public static int menu(int nPersonajes, int altura, int anchura, int porBuenos, int porMalos) {
+        System.out.println(AZUL);
         titulo("Generar Presonajes", 20);
+        System.out.println(RESET);
+
         System.out.println("""
 
                 1. Mitad Buenos y Mitad Malos

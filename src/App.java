@@ -6,6 +6,7 @@ import Entidades.ListFunciones.Funciones;
 
 public class App {
     public static final String NARANJA = "\u001B[38;2;255;165;0m";
+    public static final String AZUL = "\u001B[34m";
     public static final String RESET = "\033[0m";
     public static final String CLEAN_SCREEN = "\033[H\033[2J";
 
@@ -19,7 +20,9 @@ public class App {
         Entidad[][] arrayEntidades;
         Personajes[] arrayPersonajes;
 
+        System.out.println(AZUL);
         Funciones.titulo("Survivors", 20);
+        System.out.println(RESET);
         if (altura == -1 && anchura == -1 && nPersonajes == -1) {
             // Pedir altura y anchura comprobando si cumplen con los requesitos
             altura = Integer.parseInt(System.console().readLine("Dame el altura del tablero: "));
@@ -72,7 +75,7 @@ public class App {
 
                                 if (resultado < entidad.getVida()) {
                                     String name = String.format("El %s ha ganado el combate!",
-                                            defensor.getClass().getSimpleName());
+                                            entidad.getClass().getSimpleName());
                                     System.out.println(NARANJA);
                                     Funciones.titulo(name, 20);
                                     System.out.println(RESET);
