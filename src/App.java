@@ -96,7 +96,6 @@ public class App {
                         }
                     }
                 }
-
             }
             end = Funciones.terminar(end);
         } while (end == false);
