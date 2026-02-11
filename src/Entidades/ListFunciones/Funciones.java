@@ -255,11 +255,17 @@ public class Funciones {
     public static boolean terminar(boolean end) {
         if (Buenos.getnBuenos() <= 0) {
             System.out.println(CLEAN_SCREEN);
-            System.out.println("Los Malos han Esterminado a los Buenos");
+
+            System.out.println(RED);
+            titulo("Los Malos han Esterminado a los Buenos", 20);
+            System.out.println(RESET);
             return true;
         } else if (Malos.getnMalos() <= 0) {
             System.out.println(CLEAN_SCREEN);
-            System.out.println("Los Buenos han Sobrevivido a los Malos");
+
+            System.out.println(VERDE);
+            titulo("Los Buenos han Sobrevivido a los Malos", 20);
+            System.out.println(RESET);
             return true;
         }
         return false;

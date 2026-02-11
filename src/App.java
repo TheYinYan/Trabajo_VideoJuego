@@ -5,6 +5,8 @@ import Entidades.Malos;
 import Entidades.ListFunciones.Funciones;
 
 public class App {
+    public static final String NARANJA = "\u001B[38;2;255;165;0m";
+    public static final String RESET = "\033[0m";
     public static final String CLEAN_SCREEN = "\033[H\033[2J";
 
     public static void main(String[] args) throws Exception {
@@ -16,14 +18,14 @@ public class App {
         int porMalos = 0;
         Entidad[][] arrayEntidades;
         Personajes[] arrayPersonajes;
-        
-        Funciones.titulo("Survivors",20);
+
+        Funciones.titulo("Survivors", 20);
         if (altura == -1 && anchura == -1 && nPersonajes == -1) {
             // Pedir altura y anchura comprobando si cumplen con los requesitos
             altura = Integer.parseInt(System.console().readLine("Dame el altura del tablero: "));
-            Funciones.coprobaciones(altura, "altura del tablero",30);
+            Funciones.coprobaciones(altura, "altura del tablero", 30);
             anchura = Integer.parseInt(System.console().readLine("Dame el anchura del tablero: "));
-            Funciones.coprobaciones(anchura, "anchura del tablero",30);
+            Funciones.coprobaciones(anchura, "anchura del tablero", 30);
             porBuenos = Funciones.numPorcent(altura, anchura);
             porMalos = Funciones.numPorcent(altura, anchura);
             nPersonajes = Funciones.menu(nPersonajes, altura, anchura, porBuenos, porMalos);
@@ -69,17 +71,22 @@ public class App {
                                 int resultado = (int) (Math.random() * (entidad.getVida() + defensor.getVida()));
 
                                 if (resultado < entidad.getVida()) {
-                                    System.out.printf("El %s ha ganado el combate!%n",
-                                            entidad.getClass().getSimpleName());
+                                    String name = String.format("El %s ha ganado el combate!",
+                                            defensor.getClass().getSimpleName());
+                                    System.out.println(NARANJA);
+                                    Funciones.titulo(name, 20);
+                                    System.out.println(RESET);
                                     Thread.sleep(1000);
 
                                     Funciones.eliminarPersonaje(nPersonajes, arrayPersonajes, arrayEntidades, defensor,
                                             auxX,
                                             auxY);
-
                                 } else {
-                                    System.out.printf("El %s ha ganado el combate!%n",
+                                    String name = String.format("El %s ha ganado el combate!",
                                             defensor.getClass().getSimpleName());
+                                    System.out.println(NARANJA);
+                                    Funciones.titulo(name, 20);
+                                    System.out.println(RESET);
                                     Thread.sleep(1000);
 
                                     Funciones.eliminarPersonaje(nPersonajes, arrayPersonajes, arrayEntidades, entidad,
