@@ -14,16 +14,28 @@ public class Funciones {
     public static final String RESET = "\033[0m";
     public static int opcion;
 
-    public static void titulo() {
-        System.out.println("""
-
-                ***************************************
-                *                                     *
-                *              Survivors              *
-                *                                     *
-                ***************************************
-
-                """);
+    public static void titulo(String texto, int espacios) {
+        int ancho = espacios + texto.length() + 2;
+        String esp = " ";
+        
+        System.out.println();
+        for (int i = 0; i < ancho; i++) {
+            System.out.print("*");
+            if (i < texto.length() - 1)
+                esp += " ";
+        }
+        System.out.println();
+        for (int i = 0; i < 3; i++) {
+            System.out.print("*");
+            for (int j = 0; j < 1; j++) {
+                System.out.printf("%10s%s%10s", " ", (i == 1) ? texto : esp, " ");
+            }
+            System.out.println("*");
+        }
+        for (int i = 0; i < ancho; i++) {
+            System.out.print("*");
+        }
+        System.out.println();
     }
 
     public static int numPorcent(int altura, int anchura) {
@@ -32,13 +44,8 @@ public class Funciones {
     }
 
     public static int menu(int nPersonajes, int altura, int anchura, int porBuenos, int porMalos) {
+        titulo("Generar Presonajes", 20);
         System.out.println("""
-
-                ****************************************
-                *                                      *
-                *          Generar Presonajes          *
-                *                                      *
-                ****************************************
 
                 1. Mitad Buenos y Mitad Malos
                 2. Numero Personaje Aleatorios
