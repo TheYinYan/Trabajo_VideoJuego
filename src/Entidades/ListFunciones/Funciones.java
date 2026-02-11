@@ -14,6 +14,18 @@ public class Funciones {
     public static final String RESET = "\033[0m";
     public static int opcion;
 
+    public static void titulo() {
+        System.out.println("""
+
+                ***************************************
+                *                                     *
+                *              Survivors              *
+                *                                     *
+                ***************************************
+
+                """);
+    }
+
     public static int numPorcent(int altura, int anchura) {
         int area = altura * anchura;
         return (int) (Math.random() * (area * 0.005) + 1);
@@ -21,6 +33,12 @@ public class Funciones {
 
     public static int menu(int nPersonajes, int altura, int anchura, int porBuenos, int porMalos) {
         System.out.println("""
+
+                ****************************************
+                *                                      *
+                *          Generar Presonajes          *
+                *                                      *
+                ****************************************
 
                 1. Mitad Buenos y Mitad Malos
                 2. Numero Personaje Aleatorios
@@ -30,7 +48,7 @@ public class Funciones {
         switch (opcion) {
             case 1:
                 nPersonajes = Integer.parseInt(System.console().readLine("Dame el numero de personajes: "));
-                coprobaciones(nPersonajes, "numero de personajes",0);
+                coprobaciones(nPersonajes, "numero de personajes", 0);
                 break;
             case 2:
                 nPersonajes = porMalos + porBuenos;
@@ -52,7 +70,7 @@ public class Funciones {
                 System.out.printf("La %s no puede ser %d%n", nombre, atributo);
             else if (atributo % 2 != 0)
                 System.out.printf("La %s tiene que ser un numero par %n", nombre);
-            else if(atributo < min)
+            else if (atributo < min)
                 System.out.println("Altura debe ser mayor o igula que 30");
             System.out.printf("Dame el %s: ", nombre);
             atributo = Integer.parseInt(System.console().readLine());
@@ -60,7 +78,8 @@ public class Funciones {
         return atributo;
     }
 
-    public static void generador(int altura, int anchura , Entidad[][] arrayEntidades, Personajes[] arrayPersonajes, int nPersonajes, int porBuenos) {
+    public static void generador(int altura, int anchura, Entidad[][] arrayEntidades, Personajes[] arrayPersonajes,
+            int nPersonajes, int porBuenos) {
         Funciones.generadorEntidades(altura, anchura, arrayEntidades, 0.01);
         if (Funciones.opcion == 1 || Funciones.opcion == 3) {
             Funciones.generadorEntidades(altura, anchura, arrayEntidades, arrayPersonajes, nPersonajes);

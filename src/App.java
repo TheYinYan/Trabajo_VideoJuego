@@ -16,7 +16,7 @@ public class App {
         int porMalos = 0;
         Entidad[][] arrayEntidades;
         Personajes[] arrayPersonajes;
-
+        Funciones.titulo();
         if (altura == -1 && anchura == -1 && nPersonajes == -1) {
             // Pedir altura y anchura comprobando si cumplen con los requesitos
             altura = Integer.parseInt(System.console().readLine("Dame el altura del tablero: "));
