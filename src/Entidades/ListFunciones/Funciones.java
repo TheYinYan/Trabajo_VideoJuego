@@ -30,7 +30,7 @@ public class Funciones {
         switch (opcion) {
             case 1:
                 nPersonajes = Integer.parseInt(System.console().readLine("Dame el numero de personajes: "));
-                coprobaciones(nPersonajes, "numero de personajes");
+                coprobaciones(nPersonajes, "numero de personajes",0);
                 break;
             case 2:
                 nPersonajes = porMalos + porBuenos;
@@ -46,12 +46,14 @@ public class Funciones {
         return nPersonajes;
     }
 
-    public static int coprobaciones(int atributo, String nombre) {
-        while (atributo <= 0 || atributo % 2 != 0) {
+    public static int coprobaciones(int atributo, String nombre, int min) {
+        while (atributo <= 0 || atributo % 2 != 0 || atributo < min) {
             if (atributo <= 0)
                 System.out.printf("La %s no puede ser %d%n", nombre, atributo);
             else if (atributo % 2 != 0)
                 System.out.printf("La %s tiene que ser un numero par %n", nombre);
+            else if(atributo < min)
+                System.out.println("Altura debe ser mayor o igula que 30");
             System.out.printf("Dame el %s: ", nombre);
             atributo = Integer.parseInt(System.console().readLine());
         }

@@ -20,9 +20,9 @@ public class App {
         if (altura == -1 && anchura == -1 && nPersonajes == -1) {
             // Pedir altura y anchura comprobando si cumplen con los requesitos
             altura = Integer.parseInt(System.console().readLine("Dame el altura del tablero: "));
-            Funciones.coprobaciones(altura, "altura del tablero");
+            Funciones.coprobaciones(altura, "altura del tablero",30);
             anchura = Integer.parseInt(System.console().readLine("Dame el anchura del tablero: "));
-            Funciones.coprobaciones(anchura, "anchura del tablero");
+            Funciones.coprobaciones(anchura, "anchura del tablero",30);
             porBuenos = Funciones.numPorcent(altura, anchura);
             porMalos = Funciones.numPorcent(altura, anchura);
             nPersonajes = Funciones.menu(nPersonajes, altura, anchura, porBuenos, porMalos);
