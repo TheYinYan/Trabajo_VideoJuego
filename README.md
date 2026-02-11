@@ -60,7 +60,7 @@
 - **opcion** -> Opciones para el **menu**
 
 ### Funciones
-- **titulo** -> Pintar un titulo en un cuadrado de pendiendo del texto
+- **titulo** -> Pintar un titulo en un cuadrado dinamicamente de pendiendo del texto
 - **menu** -> Pinta un menu con las opciones de Crear **Personajes**
 - **coprobaciones** -> Comprueba que los número introducido:
     - Sea mayor que 0
