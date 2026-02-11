@@ -1,9 +1,9 @@
 # Trabajo del Video Juego
 
-## Notas para actualizar
+<!-- ## Notas para actualizar
 
 - Mirar si se pueden Poner Funciones en private o protejido 
-<!-- - Hacer los Arrays -> ArrayLists  -->
+- Hacer los Arrays -> ArrayLists  -->
 
 ## [Codigo Java del MAIN](src/App.java) 
 
