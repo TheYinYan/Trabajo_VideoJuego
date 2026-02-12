@@ -14,6 +14,11 @@ public class Funciones {
     public static final String RESET = "\033[0m";
     public static int opcion;
 
+    public static void CLEANSCREEN() {
+        System.out.println("\033[H");
+        System.out.flush();
+    }
+
     public static void titulo(String texto, int espacios) {
         int ancho = espacios + texto.length() + 2;
         String esp = " ";
@@ -159,26 +164,29 @@ public class Funciones {
                 VERDE, Buenos.getnBuenos(), RESET,
                 RED, Malos.getnMalos(), RESET);
 
-        System.out.print("╔");
+        StringBuilder sb = new StringBuilder("");
+        sb.append("╔");
         for (int i = 0; i <= anchura; i++) {
-            System.out.print("═");
+            sb.append("═");
         }
-        System.out.println("╗");
+        sb.append("╗\n");
         for (int i = 0; i < altura; i++) {
             for (int j = -1; j < anchura; j++) {
                 if (j == -1) {
-                    System.out.print("║ ");
+                    sb.append("║ ");
                 } else {
-                    System.out.printf("%s", (arrayEntidades[i][j] == null) ? " " : arrayEntidades[i][j]);
+                    String text = String.format("%s", (arrayEntidades[i][j] == null) ? " " : arrayEntidades[i][j]);
+                    sb.append(text);
                 }
             }
-            System.out.println("║");
+            sb.append("║\n");
         }
-        System.out.print("╚");
+        sb.append("╚");
         for (int i = 0; i <= anchura; i++) {
-            System.out.print("═");
+            sb.append("═");
         }
-        System.out.println("╝");
+        sb.append("╝\n");
+        System.out.println(sb.toString());
     }
 
     public static void asignarPersonajesCercanos(int nPersonajes, Personajes[] arrayPersonajes, String tipoPersonaje,
