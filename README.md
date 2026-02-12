@@ -50,7 +50,6 @@
 ### Atributos static
 - **AZUL** -> Cambia a color Azul para el texto
 - **NARANJA** -> Cambia a color Naranja para el texto
-- **CLEAN_SCREEN** -> Limpia la consola
 
 ## [Clase Funciones](src/Entidades/ListFunciones/Funciones.java)
 
