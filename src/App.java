@@ -74,23 +74,23 @@ public class App {
                                 int resultado = (int) (Math.random() * (entidad.getVida() + defensor.getVida()));
 
                                 if (resultado < entidad.getVida()) {
-                                    String name = String.format("El %s ha ganado el combate!",
-                                            entidad.getClass().getSimpleName());
-                                    System.out.println(NARANJA);
-                                    Funciones.titulo(name, 20);
-                                    System.out.println(RESET);
-                                    Thread.sleep(600);
+                                    // String name = String.format("El %s ha ganado el combate!",
+                                    //         entidad.getClass().getSimpleName());
+                                    // System.out.println(NARANJA);
+                                    // Funciones.titulo(name, 20);
+                                    // System.out.println(RESET);
+                                    // Thread.sleep(600);
 
                                     Funciones.eliminarPersonaje(nPersonajes, arrayPersonajes, arrayEntidades, defensor,
                                             auxX,
                                             auxY);
                                 } else {
-                                    String name = String.format("El %s ha ganado el combate!",
-                                            defensor.getClass().getSimpleName());
-                                    System.out.println(NARANJA);
-                                    Funciones.titulo(name, 20);
-                                    System.out.println(RESET);
-                                    Thread.sleep(600);
+                                    // String name = String.format("El %s ha ganado el combate!",
+                                    //         defensor.getClass().getSimpleName());
+                                    // System.out.println(NARANJA);
+                                    // Funciones.titulo(name, 20);
+                                    // System.out.println(RESET);
+                                    // Thread.sleep(600);
 
                                     Funciones.eliminarPersonaje(nPersonajes, arrayPersonajes, arrayEntidades, entidad,
                                             j, i);
