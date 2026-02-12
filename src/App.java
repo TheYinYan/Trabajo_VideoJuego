@@ -5,7 +5,6 @@ import Entidades.Malos;
 import Entidades.ListFunciones.Funciones;
 
 public class App {
-    public static final String CLEAN_SCREEN = "\033[H\033[2J";
     public static final String NARANJA = "\u001B[38;2;255;165;0m";
     public static final String AZUL = "\u001B[34m";
     public static final String RESET = "\033[0m";
@@ -20,7 +19,7 @@ public class App {
         Entidad[][] arrayEntidades;
         Personajes[] arrayPersonajes;
         
-        System.out.println(CLEAN_SCREEN);
+        System.out.println(Funciones.CLEAN_SCREEN);
         System.out.println(AZUL);
         Funciones.titulo("Survivors", 20);
         System.out.println(RESET);
@@ -39,7 +38,7 @@ public class App {
         arrayPersonajes = new Personajes[nPersonajes];
 
         Funciones.generador(altura, anchura, arrayEntidades, arrayPersonajes, nPersonajes, porBuenos);
-        System.out.println(CLEAN_SCREEN);
+        System.out.println(Funciones.CLEAN_SCREEN);
 
         do {
             Funciones.CLEANSCREEN();
