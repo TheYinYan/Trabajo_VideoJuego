@@ -127,7 +127,6 @@
 
 ### Atributos 
 - Atributos heredados de **Personajes**
-- **CLEAN_SCREEN** -> Limpia la consola
 - **RED** -> Cambia a color Rojo para el texto
 - Al **Bueno** al que persigue
 - **nMalos** -> Número de **Malos** totales
