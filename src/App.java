@@ -42,8 +42,8 @@ public class App {
         do {
             System.out.println(CLEAN_SCREEN);
             Funciones.pintarTablero(altura, anchura, arrayEntidades);
-            Thread.sleep(700);
-            System.out.println(CLEAN_SCREEN);
+            Thread.sleep(100);
+            // System.out.println(CLEAN_SCREEN);
 
             // Asignar Asignacion de Malos a Buneos y viceversa
             Funciones.asignarPersonajesCercanos(nPersonajes, arrayPersonajes, "Buenos", "Malos");
@@ -68,7 +68,7 @@ public class App {
                             // Si hay personaje (lucha)
                             else if ((arrayEntidades[auxY][auxX] instanceof Malos && entidad instanceof Buenos)
                                     || (arrayEntidades[auxY][auxX] instanceof Buenos && entidad instanceof Malos)) {
-                                System.out.println(CLEAN_SCREEN);
+                                // System.out.println(CLEAN_SCREEN);
 
                                 Entidad defensor = arrayEntidades[auxY][auxX];
                                 int resultado = (int) (Math.random() * (entidad.getVida() + defensor.getVida()));
@@ -79,7 +79,7 @@ public class App {
                                     System.out.println(NARANJA);
                                     Funciones.titulo(name, 20);
                                     System.out.println(RESET);
-                                    Thread.sleep(1000);
+                                    Thread.sleep(600);
 
                                     Funciones.eliminarPersonaje(nPersonajes, arrayPersonajes, arrayEntidades, defensor,
                                             auxX,
@@ -90,7 +90,7 @@ public class App {
                                     System.out.println(NARANJA);
                                     Funciones.titulo(name, 20);
                                     System.out.println(RESET);
-                                    Thread.sleep(1000);
+                                    Thread.sleep(600);
 
                                     Funciones.eliminarPersonaje(nPersonajes, arrayPersonajes, arrayEntidades, entidad,
                                             j, i);

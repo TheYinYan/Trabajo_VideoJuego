@@ -34,7 +34,7 @@ public class Malos extends Personajes {
             super.mover(ancho, alto, arrayEntidades);
             return;
 
-        } else if (this.estaCercaDe(Bueno, 10)) {
+        } else if (this.estaCercaDe(Bueno, 1000)) {
             if (getX() < Bueno.getX()) {
                 setVx(1);
             } else if (getX() > Bueno.getX()) {
