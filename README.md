@@ -62,6 +62,7 @@
 - **opcion** -> Opciones para el **menu**
 
 ### Funciones
+- **CLEANSCREEN** -> Limpiar Pantalla con flush
 - **titulo** -> Pintar un titulo en un cuadrado dinamicamente de pendiendo del texto
 - **menu** -> Pinta un menu con las opciones de Crear **Personajes**
 - **coprobaciones** -> Comprueba que los número introducido:
@@ -126,7 +127,6 @@
 
 ### Atributos 
 - Atributos heredados de **Personajes**
-- **CLEAN_SCREEN** -> Limpia la consola
 - **RED** -> Cambia a color Rojo para el texto
 - Al **Bueno** al que persigue
 - **nMalos** -> Número de **Malos** totales
