@@ -1,5 +1,8 @@
 # Trabajo del Video Juego
 
+![Versión](https://img.shields.io/badge/versión-1.0-blue)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
+![Licencia](https://img.shields.io/badge/licencia-MIT-green)
 <!-- ## Notas para actualizar
 
 - Mirar si se pueden Poner Funciones en private o protejido 
